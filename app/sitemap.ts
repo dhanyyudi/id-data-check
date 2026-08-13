@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://bacadataindo.my.id";
+  const baseUrl = SITE_URL;
   const lastModified = new Date();
 
   const routes = [
@@ -18,19 +19,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/kodepos`,
+      url: `${baseUrl}/batch`,
       lastModified,
-      changeFrequency: "daily" as const,
-      priority: 0.9,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
     },
+    // /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap; lihat plan/05.
     {
       url: `${baseUrl}/plat`,
-      lastModified,
-      changeFrequency: "daily" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/npsn`,
       lastModified,
       changeFrequency: "daily" as const,
       priority: 0.9,

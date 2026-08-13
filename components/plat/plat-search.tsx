@@ -101,13 +101,13 @@ export function PlatSearch() {
           className="w-full font-mono text-base sm:text-lg tracking-wider px-3.5 py-2.5 sm:py-3 border border-zinc-300 rounded-xl bg-white text-zinc-950 text-center placeholder:font-sans placeholder:text-xs placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-zinc-950/20 focus:border-zinc-950 transition-colors"
         />
         <p className="text-[11px] sm:text-xs text-zinc-500 text-center">
-          Ketik kode wilayah (contoh: B/D) + angka registrasi + seri akhir (contoh: UXX) untuk membaca kota/kabupaten spesifik.
+          Ketik kode wilayah (contoh: B atau D), angka registrasi, dan seri akhir (contoh: UXX) untuk membaca kota/kabupaten spesifik.
         </p>
       </div>
 
       {showErr && (
         <p className="text-xs font-semibold text-red-600 text-center">
-          Format tidak valid: Harus diawali 1-2 huruf kode wilayah (contoh: B, D, BK)
+          Format tidak valid: Harus diawali 1–2 huruf kode wilayah (contoh: B, D, BK)
         </p>
       )}
 
@@ -134,7 +134,7 @@ export function PlatSearch() {
             </div>
             <p className="text-xs sm:text-sm font-bold text-zinc-950">Menunggu Input Kode Plat</p>
             <p className="text-[11px] sm:text-xs text-zinc-500 mt-1 max-w-xs mx-auto">
-              Ketik plat kendaraan (misal `B 1234 UXX` atau `D 1234 AF`) untuk membaca Sub-Wilayah Kota/Kabupaten & jenis kendaraan.
+              Ketik plat kendaraan (misal `B 1234 UXX` atau `D 1234 AF`) untuk membaca sub-wilayah kota/kabupaten dan jenis kendaraan.
             </p>
           </div>
         )}

@@ -5,12 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Database, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SITE_NAME } from "@/lib/site";
 
+// Entri /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap; lihat plan/05.
 const navItems = [
-  { href: "/nik", label: "NIK Reader" },
-  { href: "/kodepos", label: "Kode Pos" },
-  { href: "/plat", label: "Plat Nomor" },
-  { href: "/npsn", label: "NPSN Sekolah" },
+  { href: "/nik", label: "NIK" },
+  { href: "/batch", label: "Batch NIK" },
+  { href: "/plat", label: "Plat" },
 ];
 
 export function Header() {
@@ -32,10 +33,10 @@ export function Header() {
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-bold tracking-tight text-zinc-950 leading-none">
-                Indonesia Data Reader
+                {SITE_NAME}
               </span>
               <span className="text-[11px] font-medium text-zinc-500 mt-1">
-                Unified Data Inspector
+                Pembaca data publik Indonesia
               </span>
             </div>
           </Link>
@@ -67,7 +68,7 @@ export function Header() {
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="grid h-9 w-9 place-items-center rounded-lg border border-zinc-200 text-zinc-800 hover:bg-zinc-100 transition-colors"
-              aria-label="Toggle navigation menu"
+              aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>

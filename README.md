@@ -103,6 +103,20 @@ Query school metadata for over **213,000+ active schools** across Indonesia (PAU
 
 ---
 
+## Contributing
+
+### Writing user-facing copy
+
+All user-facing text lives in `app/` and `components/`, and it is written in Bahasa Indonesia. Code comments and identifiers stay in English. When writing or editing that copy:
+
+- **Never use an em dash (`—`) or a spaced hyphen (` - `)** as a sentence connector, clause separator, or lead-in to an explanation. Use a new sentence, a conjunction (`karena`, `yang`, `sehingga`, `dan`, `tetapi`), a colon when introducing a list or definition, or parentheses instead.
+- Hyphens are only allowed for four things: compound words, Indonesian reduplication, ranges (use an en dash, e.g. `5%–10%`), and prefixes.
+- Use `dan` instead of `&` in prose.
+
+Run `bun run check:copy` to verify the copy rules before committing.
+
+---
+
 ## License
 
 [MIT License](LICENSE)

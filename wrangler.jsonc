@@ -1,19 +1,15 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "indonesia-data-reader",
+  "name": "id-data-check",
   "compatibility_date": "2024-12-30",
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "workers_dev": false,
-  "routes": [
-    {
-      "pattern": "bacadataindo.my.id",
-      "zone_name": "bacadataindo.my.id",
-      "custom_domain": true
-    }
-  ],
+  "workers_dev": true,
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://id-data-check.gislabs.workers.dev"
+  },
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"

@@ -3,9 +3,10 @@ import { NpsnSearch } from "@/components/npsn/npsn-search";
 import { NpsnFormat } from "@/components/npsn/npsn-format";
 import { PageShell } from "@/components/layout/page-shell";
 import { FaqSection } from "@/components/ui/faq-section";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cek Data Sekolah (NPSN) — Pencarian 213.000+ Sekolah Indonesia",
+  title: "Cek Data Sekolah NPSN: Pencarian 213.000+ Sekolah Indonesia",
   description:
     "Cari data sekolah berdasarkan 8 digit Nomor Pokok Sekolah Nasional (NPSN) atau nama sekolah. Database mencakup 213.000+ PAUD, SD/MI, SMP/MTs, hingga SMA/SMK/MA.",
   keywords: [
@@ -17,14 +18,15 @@ export const metadata: Metadata = {
     "nomor pokok sekolah nasional",
   ],
   alternates: {
-    canonical: "https://bacadataindo.my.id/npsn",
+    canonical: `${SITE_URL}/npsn`,
   },
+  robots: { index: false, follow: false },
   openGraph: {
-    title: "Cek Data Sekolah (NPSN) — 213.000+ Sekolah Indonesia",
+    title: "Cek Data Sekolah NPSN: 213.000+ Sekolah Indonesia",
     description:
       "Cari sekolah berdasarkan 8 digit NPSN atau nama sekolah. Lengkap dengan jenjang, status, dan alamat.",
-    url: "https://bacadataindo.my.id/npsn",
-    siteName: "Indonesia Data Reader",
+    url: `${SITE_URL}/npsn`,
+    siteName: SITE_NAME,
     locale: "id_ID",
     type: "website",
   },

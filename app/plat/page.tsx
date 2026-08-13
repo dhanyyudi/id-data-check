@@ -3,9 +3,10 @@ import { PlatSearch } from "@/components/plat/plat-search";
 import { PlatFormat } from "@/components/plat/plat-format";
 import { PageShell } from "@/components/layout/page-shell";
 import { FaqSection } from "@/components/ui/faq-section";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cek Kode Plat Nomor Kendaraan Indonesia — Wilayah & Polda",
+  title: "Cek Kode Plat Nomor Kendaraan Indonesia: Wilayah dan Polda",
   description:
     "Cek kode plat nomor kendaraan Indonesia. Cari wilayah pendaftaran, Kepolisian Daerah (Polda), dan pulau dari 61 kode plat nomor kendaraan.",
   keywords: [
@@ -17,14 +18,14 @@ export const metadata: Metadata = {
     "kode wilayah plat nomor",
   ],
   alternates: {
-    canonical: "https://bacadataindo.my.id/plat",
+    canonical: `${SITE_URL}/plat`,
   },
   openGraph: {
-    title: "Cek Kode Plat Nomor Kendaraan Indonesia — Wilayah & Polda",
+    title: "Cek Kode Plat Nomor Kendaraan Indonesia: Wilayah dan Polda",
     description:
-      "Cek kode plat kendaraan Indonesia — wilayah, Polda, dan pulau dari 61 kode plat di seluruh Indonesia.",
-    url: "https://bacadataindo.my.id/plat",
-    siteName: "Indonesia Data Reader",
+      "Cek kode plat kendaraan Indonesia: wilayah, Polda, dan pulau dari 61 kode plat di seluruh Indonesia.",
+    url: `${SITE_URL}/plat`,
+    siteName: SITE_NAME,
     locale: "id_ID",
     type: "website",
   },

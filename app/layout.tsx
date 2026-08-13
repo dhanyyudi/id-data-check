@@ -4,6 +4,7 @@ import { TRPCReactProvider } from "@/lib/trpc/client";
 import { TooltipProvider } from "@cloudflare/kumo";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,12 +19,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Indonesia Data Reader",
-    template: "%s — Indonesia Data Reader",
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Baca & validasi data identitas Indonesia: NIK, kode pos, plat nomor, dan NPSN. Gratis, cepat, langsung di browser.",
-  metadataBase: new URL("https://bacadataindo.my.id"),
+    "Baca dan validasi data identitas Indonesia: NIK, kode pos, plat nomor, dan NPSN. Gratis dan cepat. Pembacaan NIK berjalan langsung di browser.",
+  metadataBase: new URL(SITE_URL),
 };
 
 export default function RootLayout({

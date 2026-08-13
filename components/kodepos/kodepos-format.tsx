@@ -9,7 +9,7 @@ const KODEPOS_SPEC = [
     label: "Wilayah Pos Utama",
     digits: "Digit 1",
     sample: "4",
-    description: "Digit pertama menentukan zona pos geografis utama di Indonesia (wilayah 1-9).",
+    description: "Digit pertama menentukan zona pos geografis utama di Indonesia (wilayah 1–9).",
   },
   {
     id: "kab",

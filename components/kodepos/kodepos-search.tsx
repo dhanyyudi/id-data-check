@@ -137,7 +137,7 @@ export function KodeposSearch() {
 
         <p className="text-[11px] sm:text-xs text-zinc-500">
           {isCodeMode
-            ? "Masukkan 5 digit kode pos untuk mencari kelurahan & lokasi peta."
+            ? "Masukkan 5 digit kode pos untuk mencari kelurahan dan lokasi peta."
             : "Ketik minimal 2 huruf nama kelurahan/kecamatan/kota untuk mencari kode posnya."}
         </p>
       </div>
@@ -182,7 +182,7 @@ export function KodeposSearch() {
             <p className="text-xs sm:text-sm font-bold text-zinc-950">Menunggu Input Pencarian</p>
             <p className="text-[11px] sm:text-xs text-zinc-500 mt-1 max-w-xs mx-auto">
               {isCodeMode
-                ? "Masukkan 5 digit kode pos di atas untuk mencari data lokasi kelurahan & peta."
+                ? "Masukkan 5 digit kode pos di atas untuk mencari data lokasi kelurahan dan peta."
                 : "Ketik nama kelurahan, kecamatan, atau kota untuk menemukan kode posnya."}
             </p>
           </div>
