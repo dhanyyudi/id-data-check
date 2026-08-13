@@ -1,6 +1,7 @@
 "use client";
 
-import { cn, Tabs } from "@cloudflare/kumo";
+import { cn } from "@/lib/utils";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const tabs = [
   { value: "nik", label: "NIK" },
@@ -18,15 +19,18 @@ type Props = {
 
 export function SearchTabs({ active, onChange }: Props) {
   return (
-    <Tabs
-      variant="segmented"
-      tabs={tabs.map((t) => ({
-        value: t.value,
-        label: t.label,
-        className: cn(active === t.value && "font-medium"),
-      }))}
-      value={active}
-      onValueChange={(v) => onChange(v as SearchTab)}
-    />
+    <Tabs value={active} onValueChange={(v) => onChange(v as SearchTab)}>
+      <TabsList>
+        {tabs.map((t) => (
+          <TabsTrigger
+            key={t.value}
+            value={t.value}
+            className={cn(active === t.value && "font-medium")}
+          >
+            {t.label}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+    </Tabs>
   );
 }

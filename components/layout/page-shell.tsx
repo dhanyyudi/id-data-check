@@ -19,23 +19,26 @@ export function PageShell({
   return (
     <main className="mx-auto w-full max-w-3xl px-4 py-6 sm:px-6 sm:py-10">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-1.5 text-xs text-zinc-500 mb-5">
-        <Link href="/" className="hover:text-zinc-950 transition-colors font-medium">
+      <nav className="flex items-center gap-1.5 text-xs text-muted-foreground mb-5">
+        <Link
+          href="/"
+          className="inline-flex min-h-11 items-center hover:text-foreground transition-colors font-medium"
+        >
           Beranda
         </Link>
-        <ChevronRight className="h-3.5 w-3.5 text-zinc-400" />
-        <span className="text-zinc-950 font-semibold">{breadcrumb}</span>
+        <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+        <span className="text-foreground font-semibold">{breadcrumb}</span>
       </nav>
 
       {/* Header Info */}
       <div className="animate-fade-up">
-        <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-zinc-950 bg-zinc-100 px-2.5 py-0.5 rounded border border-zinc-300">
+        <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-foreground bg-accent px-2.5 py-0.5 border-2 border-border">
           {subtitle}
         </span>
-        <h1 className="text-[2rem] leading-tight sm:text-[2.5rem] font-black tracking-tight text-zinc-950 mt-2.5">
+        <h1 className="font-head text-[2rem] leading-tight sm:text-[2.5rem] text-foreground mt-2.5">
           {title}
         </h1>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-600 max-w-2xl">
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground max-w-2xl">
           {description}
         </p>
       </div>

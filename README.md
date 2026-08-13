@@ -1,122 +1,95 @@
-# Indonesia Data Reader
+# Cek Data Indonesia
 
-**Indonesia Data Reader** is a high-performance, unified platform and REST API for parsing, validating, and inspecting Indonesian identity and regional data — including 16-digit NIK numbers, 5-digit postal codes, vehicle license plates (with sub-region decoding), and 8-digit National School IDs (NPSN).
+Aplikasi web untuk membaca dan memvalidasi data identitas Indonesia: Nomor Induk
+Kependudukan (NIK) satu per satu atau massal dari berkas CSV, serta kode plat
+nomor kendaraan. Seluruh pemrosesan NIK berjalan langsung di browser, tanpa
+unggahan ke server.
+
+URL live: <https://id-data-check.gislabs.workers.dev>
 
 ---
 
-## Key Modules
+## Fitur yang berjalan
 
-### 1. NIK Reader (Nomor Induk Kependudukan)
-Parse and validate 16-digit Indonesian national identification numbers (`PPBBCCDDMMYYXXXX`). Extract province, regency/city, district, gender (DD + 40 rule for females), and date of birth automatically.
+- **Pembaca NIK** (`/nik`): membaca 16 digit NIK KTP menjadi provinsi,
+  kabupaten/kota, kecamatan, jenis kelamin, dan tanggal lahir. Data wilayah
+  (7.817 record level 1 sampai 3) dimuat sekali ke browser.
+- **Batch NIK** (`/batch`): mengolah ratusan NIK dari satu berkas CSV, dengan
+  pilihan kolom hasil, lima format tanggal lahir, umur, dan status validitas.
+  Hasil diunduh sebagai CSV atau disalin sebagai TSV. Berkas tidak pernah
+  meninggalkan browser.
+- **Plat Nomor** (`/plat`): membaca 61 kode plat wilayah beserta Polda dan
+  pulau, termasuk sub-wilayah kota/kabupaten dari huruf seri.
 
-- **Endpoint**: `POST /api/v0/nik`
-- **Payload**: `{ "nik": "3204214501900001" }`
-- **Response**:
-```json
-{
-  "provinsi": "Jawa Barat",
-  "kabupaten": "Kabupaten Bandung",
-  "kecamatan": "Ciparay",
-  "jenis_kelamin": "PEREMPUAN",
-  "tanggal_lahir": "1990-01-05",
-  "nomor_urut": "0001"
-}
+**Kode Pos dan NPSN belum aktif di fork ini.** Kedua halaman butuh database
+Turso yang belum tersedia, jadi keduanya disembunyikan dari navigasi dan
+sitemap sementara. Kodenya tetap utuh: untuk menghidupkannya kembali, siapkan
+database Turso, isi tabel kodepos dan sekolah, lalu kembalikan kedua rute ke
+navigasi dan sitemap.
+
+Endpoint REST yang tersedia: `POST /api/v1/nik`.
+
+---
+
+## Menjalankan secara lokal
+
+```bash
+bun install
+bun dev
 ```
 
----
+Uji, lint, dan pemeriksaan salinan:
 
-### 2. Kode Pos (Postal Code & Location Lookup)
-Look up full address hierarchies (province, regency, district, village) and geographical coordinates (latitude & longitude) by 5-digit postal code or village name search across **92,000+ villages**.
-
-- **Endpoint**: `POST /api/v0/kodepos`
-- **Payload**: `{ "code": 40115 }` or `{ "query": "Braga" }`
-- **Response**:
-```json
-{
-  "kelurahan": "Ciroyom",
-  "kecamatan": "Andir",
-  "kabupaten": "Kota Bandung",
-  "provinsi": "Jawa Barat",
-  "kode_pos": 40115,
-  "latitude": -6.9093,
-  "longitude": 107.5838
-}
+```bash
+bun run test
+bun run lint
+bun run check:copy
 ```
 
----
+## Deploy
 
-### 3. Plat Nomor (Vehicle License Plate & Sub-Region Decoder)
-Decode 61 regional area codes (`B`, `D`, `H`, `BK`, etc.), Police Jurisdictions (Polda), sub-regions (specific cities/regencies derived from suffix letters), and vehicle types derived from registration number ranges.
+Deploy manual:
 
-- **Endpoint**: `POST /api/v0/plat`
-- **Payload**: `{ "kode": "H 2222 ALW" }`
-- **Response**:
-```json
-{
-  "kode": "H",
-  "wilayah": "Jawa Tengah (Semarang, Salatiga, Kendal, Demak)",
-  "subWilayah": "Kota Semarang",
-  "jenisKendaraan": "Sepeda Motor",
-  "polda": "Polda Jateng",
-  "pulau": "Jawa"
-}
+```bash
+bun run deploy
 ```
 
----
-
-### 4. NPSN (Nomor Pokok Sekolah Nasional)
-Query school metadata for over **213,000+ active schools** across Indonesia (PAUD through SMA/SMK) by 8-digit NPSN code or school name.
-
-- **Endpoint**: `POST /api/v0/npsn`
-- **Payload**: `{ "npsn": "20104775" }`
-- **Response**:
-```json
-{
-  "npsn": "20104775",
-  "nama": "SD MELANIA III",
-  "jenjang": "SD",
-  "status": "Swasta",
-  "alamat": "Jl. Percetakan Negara No. 31",
-  "kabupaten": "Kota Jakarta Pusat",
-  "provinsi": "DKI Jakarta"
-}
-```
+Push ke `master` memicu deploy otomatis lewat Workers Builds. Branch lain
+mendapat preview URL lewat `wrangler versions upload`.
 
 ---
 
-## Data Coverage
+## Sumber data
 
-| Dataset | Scope / Records | Indexing Method |
-|---------|-----------------|-----------------|
-| **Administrative Regions** | 91,162 Regencies & Districts | In-Memory Map Lookup |
-| **Postal Codes** | 83,761+ Villages with Coordinates | Database Index |
-| **License Plate Codes** | 61 Regional Codes + Sub-Region Decoder | In-Memory Pattern Matcher |
-| **National School Registry (NPSN)** | 213,195+ Schools (PAUD s/d SMA/SMK) | Database Index |
+Data wilayah (provinsi, kabupaten/kota, kecamatan) berasal dari
+[`cahyadsn/wilayah`](https://github.com/cahyadsn/wilayah) sesuai Kepmendagri.
+Data plat nomor disimpan sebagai tabel statis di `lib/data/plat.ts`.
 
----
-
-## Architecture & Privacy
-
-- **Zero Data Retention**: Identity queries are parsed transiently without persisting input data to server storage.
-- **Duo-Tone Monochrome Design**: Clean, accessible, high-contrast user interface engineered for web & mobile viewports.
-- **Search Engine Optimization**: Complete metadata, OpenGraph cards, dynamic XML sitemaps, and Schema.org JSON-LD structured data.
+Komponen UI memakai registry [neobrutalism.com](https://neobrutalism.com) (MIT),
+varian Base UI.
 
 ---
 
-## Contributing
+## Asal fork
 
-### Writing user-facing copy
-
-All user-facing text lives in `app/` and `components/`, and it is written in Bahasa Indonesia. Code comments and identifiers stay in English. When writing or editing that copy:
-
-- **Never use an em dash (`—`) or a spaced hyphen (` - `)** as a sentence connector, clause separator, or lead-in to an explanation. Use a new sentence, a conjunction (`karena`, `yang`, `sehingga`, `dan`, `tetapi`), a colon when introducing a list or definition, or parentheses instead.
-- Hyphens are only allowed for four things: compound words, Indonesian reduplication, ranges (use an en dash, e.g. `5%–10%`), and prefixes.
-- Use `dan` instead of `&` in prose.
-
-Run `bun run check:copy` to verify the copy rules before committing.
+Repo ini fork dari `SaukiFutaki/indonesian-data-reader`. Hulu belum menetapkan
+lisensi, jadi kode yang diwarisi dari sana tidak membawa izin pemakaian ulang
+secara tersurat. Keputusan lisensi ada di tangan pemegang hak ciptanya.
 
 ---
 
-## License
+## Menulis teks antarmuka
 
-[MIT License](LICENSE)
+Semua teks yang dilihat pengguna ada di `app/` dan `components/`, ditulis dalam
+Bahasa Indonesia. Komentar kode dan nama variabel tetap dalam bahasa Inggris.
+Saat menulis atau mengubah salinan:
+
+- **Jangan pernah memakai em dash (`—`) atau tanda hubung berspasi (` - `)**
+  sebagai penghubung kalimat, pemisah klausa, atau pengantar penjelasan. Pakai
+  kalimat baru, kata sambung (`karena`, `yang`, `sehingga`, `dan`, `tetapi`),
+  titik dua saat memperkenalkan daftar atau definisi, atau tanda kurung.
+- Tanda hubung hanya boleh untuk empat hal: kata majemuk, kata ulang bahasa
+  Indonesia, rentang (pakai en dash, misal `5%–10%`), dan awalan.
+- Pakai `dan`, bukan `&`, di dalam prosa.
+
+Jalankan `bun run check:copy` untuk memverifikasi aturan salinan sebelum commit.

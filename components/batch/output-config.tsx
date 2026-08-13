@@ -62,12 +62,12 @@ export function OutputConfig({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-xs sm:p-6">
+      <div className="border-2 border-border bg-card p-4 shadow-md sm:p-6">
         <div className="mb-3 flex items-center justify-between gap-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-700">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">
             Kolom hasil yang akan ditambahkan
           </h3>
-          <span className="text-[11px] font-semibold text-zinc-500">
+          <span className="text-[11px] font-semibold text-muted-foreground">
             {selectedKeys.length}/{fields.length} kolom
           </span>
         </div>
@@ -80,22 +80,22 @@ export function OutputConfig({
             return (
               <div
                 key={field.key}
-                className={`flex flex-col gap-1.5 rounded-xl border p-3 transition-colors sm:flex-row sm:items-center sm:gap-3 ${
+                className={`flex flex-col gap-1.5 border-2 p-3 transition-colors sm:flex-row sm:items-center sm:gap-3 ${
                   checked
                     ? problem
-                      ? "border-red-300 bg-red-50/50"
-                      : "border-zinc-300 bg-zinc-50/60"
-                    : "border-zinc-200 bg-white opacity-70"
+                      ? "border-destructive bg-destructive/10"
+                      : "border-border bg-background"
+                    : "border-border bg-card opacity-70"
                 }`}
               >
-                <label className="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5">
+                <label className="flex min-h-11 min-w-0 flex-1 cursor-pointer items-center gap-2.5">
                   <input
                     type="checkbox"
                     checked={checked}
                     onChange={() => onToggle(field.key)}
-                    className="h-4 w-4 shrink-0 accent-zinc-950"
+                    className="h-4 w-4 shrink-0 accent-foreground"
                   />
-                  <span className="truncate text-xs font-bold text-zinc-950">
+                  <span className="truncate text-xs font-bold text-foreground">
                     {field.defaultLabel}
                   </span>
                 </label>
@@ -105,10 +105,10 @@ export function OutputConfig({
                   disabled={!checked}
                   onChange={(e) => onLabelChange(field.key, e.target.value)}
                   aria-invalid={Boolean(problem)}
-                  className={`w-full rounded-lg border px-2.5 py-1.5 text-xs font-semibold text-zinc-950 shadow-xs outline-none transition-colors focus:ring-2 focus:ring-zinc-950/15 sm:w-56 disabled:opacity-50 ${
+                  className={`w-full min-h-11 border-2 px-2.5 py-1.5 text-xs font-semibold text-foreground shadow-xs outline-none transition-colors focus:ring-2 focus:ring-primary sm:w-56 disabled:opacity-50 ${
                     problem
-                      ? "border-red-400 bg-red-50 text-red-700"
-                      : "border-zinc-300 bg-white focus:border-zinc-950"
+                      ? "border-destructive bg-destructive/10 text-destructive"
+                      : "border-border bg-card"
                   }`}
                 />
               </div>
@@ -116,10 +116,10 @@ export function OutputConfig({
           })}
         </div>
 
-        <div className="mt-4 border-t border-zinc-100 pt-4">
+        <div className="mt-4 border-t-2 border-border pt-4">
           <label
             htmlFor="date-format"
-            className="text-[11px] font-bold uppercase tracking-wider text-zinc-700"
+            className="text-[11px] font-bold uppercase tracking-wider text-foreground"
           >
             Format tanggal lahir
           </label>
@@ -128,7 +128,7 @@ export function OutputConfig({
             value={dateFormat}
             disabled={!hasTanggalLahir}
             onChange={(e) => onDateFormatChange(e.target.value)}
-            className="mt-2 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm font-semibold text-zinc-950 shadow-xs outline-none transition-colors focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/15 disabled:opacity-50 sm:w-64"
+            className="mt-2 w-full border-2 border-border bg-card px-3 py-2.5 text-sm font-semibold text-foreground shadow-xs outline-none transition-colors focus:ring-2 focus:ring-primary disabled:opacity-50 sm:w-64"
           >
             {DATE_FORMATS.map((f) => (
               <option key={f.id} value={f.id}>
@@ -137,15 +137,15 @@ export function OutputConfig({
             ))}
           </select>
           {!hasTanggalLahir && (
-            <p className="mt-1.5 text-[11px] text-zinc-500">
+            <p className="mt-1.5 text-[11px] text-muted-foreground">
               Centang kolom NIK_Tanggal Lahir untuk mengubah format ini.
             </p>
           )}
         </div>
 
         {Object.keys(problems).length > 0 && (
-          <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-3">
-            <ul className="list-inside list-disc space-y-1 text-xs font-semibold text-red-700">
+          <div className="mt-4 border-2 border-destructive bg-destructive/10 p-3">
+            <ul className="list-inside list-disc space-y-1 text-xs font-semibold text-destructive">
               {Object.values(problems).map((msg, i) => (
                 <li key={i}>{msg}</li>
               ))}
@@ -159,7 +159,7 @@ export function OutputConfig({
           type="button"
           disabled={processing}
           onClick={onBack}
-          className="inline-flex items-center gap-1 rounded-xl border border-zinc-300 bg-white px-3.5 py-2 text-xs font-bold text-zinc-950 shadow-xs transition-colors hover:bg-zinc-100 disabled:opacity-50"
+          className="inline-flex items-center gap-1 border-2 border-border bg-card px-3.5 py-3 text-xs font-bold text-foreground shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50"
         >
           <ChevronLeft className="h-3.5 w-3.5" />
           Kembali
@@ -168,7 +168,7 @@ export function OutputConfig({
           type="button"
           disabled={!canProcess}
           onClick={onProcess}
-          className="inline-flex items-center gap-2 rounded-xl bg-zinc-950 px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-zinc-800 active:scale-95 disabled:opacity-50"
+          className="inline-flex items-center gap-2 border-2 border-border bg-primary px-4 py-3 text-xs font-bold text-primary-foreground shadow-md transition-all hover:bg-primary-hover hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none disabled:opacity-50"
         >
           {processing ? "Memproses…" : "Proses"}
         </button>

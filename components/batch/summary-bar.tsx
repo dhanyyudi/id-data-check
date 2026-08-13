@@ -13,26 +13,26 @@ const CHIPS: { status: NikStatus | null; label: string; className: string; activ
   {
     status: null,
     label: "Semua",
-    className: "border-zinc-300 bg-white text-zinc-950 hover:bg-zinc-100",
-    activeClassName: "border-zinc-950 bg-zinc-950 text-white",
+    className: "border-border bg-card text-foreground hover:bg-muted",
+    activeClassName: "border-border bg-foreground text-background",
   },
   {
     status: "OK",
     label: "OK",
-    className: "border-zinc-300 bg-white text-zinc-950 hover:bg-zinc-100",
-    activeClassName: "border-zinc-950 bg-zinc-950 text-white",
+    className: "border-border bg-card text-foreground hover:bg-muted",
+    activeClassName: "border-border bg-foreground text-background",
   },
   {
     status: "PERLU DICEK",
     label: "Perlu Dicek",
-    className: "border-amber-300 bg-amber-50 text-amber-800 hover:bg-amber-100",
-    activeClassName: "border-amber-500 bg-amber-500 text-white",
+    className: "border-border bg-primary/40 text-foreground hover:bg-primary/60",
+    activeClassName: "border-border bg-primary text-primary-foreground",
   },
   {
     status: "TIDAK VALID",
     label: "Tidak Valid",
-    className: "border-red-300 bg-red-50 text-red-700 hover:bg-red-100",
-    activeClassName: "border-red-500 bg-red-500 text-white",
+    className: "border-border bg-destructive/10 text-destructive hover:bg-destructive/20",
+    activeClassName: "border-border bg-destructive text-destructive-foreground",
   },
 ];
 
@@ -45,8 +45,8 @@ export function SummaryBar({ summary, filter, onFilter }: Props) {
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-zinc-200 bg-white p-3 shadow-xs sm:p-4">
-      <span className="mr-1 text-[11px] font-bold uppercase tracking-wider text-zinc-500">
+    <div className="flex flex-wrap items-center gap-2 border-2 border-border bg-card p-3 shadow-md sm:p-4">
+      <span className="mr-1 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
         Ringkasan
       </span>
       {CHIPS.map((chip) => {
@@ -57,14 +57,14 @@ export function SummaryBar({ summary, filter, onFilter }: Props) {
             key={chip.label}
             type="button"
             onClick={() => onFilter(active ? null : chip.status)}
-            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold shadow-xs transition-colors ${
+            className={`inline-flex items-center gap-1.5 border-2 px-3.5 py-3 text-xs font-bold shadow-xs transition-all ${
               active ? chip.activeClassName : chip.className
             }`}
           >
             {chip.label}
             <span
-              className={`rounded-full px-1.5 py-0.5 text-[10px] font-black tabular ${
-                active ? "bg-white/25" : "bg-zinc-100"
+              className={`border-2 border-border px-1.5 py-0.5 text-[10px] font-black tabular ${
+                active ? "border-transparent bg-foreground/20" : "bg-muted"
               }`}
             >
               {count}
@@ -72,7 +72,7 @@ export function SummaryBar({ summary, filter, onFilter }: Props) {
           </button>
         );
       })}
-      <span className="ml-auto text-[11px] font-semibold text-zinc-500">
+      <span className="ml-auto text-[11px] font-semibold text-muted-foreground">
         {summary.total} baris data
       </span>
     </div>

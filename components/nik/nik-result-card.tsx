@@ -66,19 +66,19 @@ export function NikResultCard({ data, segments, value }: Props) {
   const isComplete = value.length >= 16;
 
   return (
-    <div className="animate-fade-in overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-xs">
+    <div className="animate-fade-in overflow-hidden border-2 border-border bg-card shadow-md">
       {/* Inspector Header */}
-      <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-100/70 px-3.5 py-2.5 sm:px-5 sm:py-3.5">
+      <div className="flex items-center justify-between border-b-2 border-border bg-muted/50 px-3.5 py-2.5 sm:px-5 sm:py-3.5">
         <div className="flex items-center gap-2">
-          <div className="grid h-6 w-6 sm:h-8 sm:w-8 place-items-center rounded-lg bg-zinc-950 text-white shadow-xs">
+          <div className="grid h-6 w-6 sm:h-8 sm:w-8 place-items-center border-2 border-border bg-primary text-primary-foreground shadow-xs">
             <Terminal className="h-3 w-3 sm:h-4 sm:w-4" />
           </div>
-          <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-950">
+          <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-foreground">
             Pemeriksa NIK
           </span>
           {isComplete && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] sm:text-xs font-bold text-zinc-950 border border-zinc-300">
-              <ShieldCheck className="h-3 w-3 text-zinc-950" />
+            <span className="inline-flex items-center gap-1 bg-card px-2 py-0.5 text-[10px] sm:text-xs font-bold text-foreground border-2 border-border">
+              <ShieldCheck className="h-3 w-3 text-foreground" />
               <span className="hidden sm:inline">16 Digit Tervalidasi</span>
               <span className="sm:hidden">16 Digit</span>
             </span>
@@ -89,16 +89,16 @@ export function NikResultCard({ data, segments, value }: Props) {
         <button
           type="button"
           onClick={handleCopyJson}
-          className="inline-flex items-center gap-1 sm:gap-1.5 rounded-lg border border-zinc-300 bg-white px-2 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-bold text-zinc-950 shadow-xs transition-colors hover:bg-zinc-100 active:scale-95 shrink-0"
+          className="inline-flex min-h-11 items-center gap-1 sm:gap-1.5 border-2 border-border bg-card px-2 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-bold text-foreground shadow-xs transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-md active:translate-x-1 active:translate-y-1 active:shadow-none shrink-0"
         >
           {copied ? (
             <>
-              <Check className="h-3 w-3 text-zinc-950" />
+              <Check className="h-3 w-3 text-foreground" />
               <span>Tersalin</span>
             </>
           ) : (
             <>
-              <Copy className="h-3 w-3 text-zinc-950" />
+              <Copy className="h-3 w-3 text-foreground" />
               <span>Salin JSON</span>
             </>
           )}
@@ -119,19 +119,19 @@ export function NikResultCard({ data, segments, value }: Props) {
             return (
               <div
                 key={seg.id}
-                className="flex flex-col justify-between rounded-xl border border-zinc-200 bg-zinc-50/60 p-3 sm:p-4 transition-colors hover:bg-zinc-100/50"
+                className="flex flex-col justify-between border-2 border-border bg-background p-3 sm:p-4 transition-colors hover:bg-muted/60"
               >
-                <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold text-zinc-500">
+                <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold text-muted-foreground">
                   <span>{mapping.label}</span>
-                  <span className="font-mono text-[10px] sm:text-[11px] text-zinc-400">
+                  <span className="font-mono text-[10px] sm:text-[11px] text-muted-foreground">
                     [{seg.maxLength}d]
                   </span>
                 </div>
                 <div className="mt-1.5 flex items-baseline justify-between gap-2">
-                  <span className="text-xs sm:text-base font-bold text-zinc-950 truncate">
+                  <span className="text-xs sm:text-base font-bold text-foreground truncate">
                     {displayVal}
                   </span>
-                  <span className="font-mono text-[11px] sm:text-xs font-bold tabular text-zinc-950 bg-white px-1.5 py-0.5 rounded border border-zinc-300">
+                  <span className="font-mono text-[11px] sm:text-xs font-bold tabular text-foreground bg-card px-1.5 py-0.5 border-2 border-border">
                     {rawVal || "—"}
                   </span>
                 </div>
@@ -140,16 +140,16 @@ export function NikResultCard({ data, segments, value }: Props) {
           })}
 
           {/* Gender Inspector Tile */}
-          <div className="flex flex-col justify-between rounded-xl border border-zinc-200 bg-zinc-50/60 p-3 sm:p-4 transition-colors hover:bg-zinc-100/50">
-            <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold text-zinc-500">
+          <div className="flex flex-col justify-between border-2 border-border bg-background p-3 sm:p-4 transition-colors hover:bg-muted/60">
+            <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold text-muted-foreground">
               <span>Jenis Kelamin</span>
-              <span className="font-mono text-[10px] sm:text-[11px] text-zinc-400">Digit 7-12</span>
+              <span className="font-mono text-[10px] sm:text-[11px] text-muted-foreground">Digit 7-12</span>
             </div>
             <div className="mt-1.5 flex items-baseline justify-between gap-2">
-              <span className="text-xs sm:text-base font-bold text-zinc-950">
+              <span className="text-xs sm:text-base font-bold text-foreground">
                 {genderLabel}
               </span>
-              <span className="font-mono text-[11px] sm:text-xs font-bold text-zinc-950 bg-white px-1.5 py-0.5 rounded border border-zinc-300">
+              <span className="font-mono text-[11px] sm:text-xs font-bold text-foreground bg-card px-1.5 py-0.5 border-2 border-border">
                 {data.jenis_kelamin === "PEREMPUAN"
                   ? "Tgl +40"
                   : data.jenis_kelamin === "LAKI-LAKI"
@@ -161,9 +161,9 @@ export function NikResultCard({ data, segments, value }: Props) {
         </div>
 
         {/* Raw NIK String Bar */}
-        <div className="mt-3 sm:mt-4 flex items-center justify-between rounded-xl border border-zinc-200 bg-zinc-100/80 px-3 py-2 sm:px-4 sm:py-2.5 text-xs text-zinc-600 font-mono">
-          <span className="font-bold text-zinc-500 text-[11px] sm:text-xs">Input Asli:</span>
-          <span className="text-xs sm:text-base font-bold tracking-widest text-zinc-950 tabular">
+        <div className="mt-3 sm:mt-4 flex items-center justify-between border-2 border-border bg-muted/60 px-3 py-2 sm:px-4 sm:py-2.5 text-xs text-muted-foreground font-mono">
+          <span className="font-bold text-muted-foreground text-[11px] sm:text-xs">Input Asli:</span>
+          <span className="text-xs sm:text-base font-bold tracking-widest text-foreground tabular">
             {value || "—"}
           </span>
         </div>

@@ -24,7 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },
-    // /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap; lihat plan/05.
+    // /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap.
+    // Kembalikan kedua rute begitu tabel kodepos dan sekolah sudah terisi.
     {
       url: `${baseUrl}/plat`,
       lastModified,

@@ -28,17 +28,17 @@ export function PlatResultCard({ data }: { data: PlatData }) {
   };
 
   return (
-    <div className="animate-fade-in overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-xs">
+    <div className="animate-fade-in overflow-hidden border-2 border-border bg-card shadow-md">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-100/70 px-3.5 py-2.5 sm:px-5 sm:py-3.5">
+      <div className="flex items-center justify-between border-b-2 border-border bg-muted/50 px-3.5 py-2.5 sm:px-5 sm:py-3.5">
         <div className="flex items-center gap-2">
-          <div className="grid h-6 w-6 sm:h-8 sm:w-8 place-items-center rounded-lg bg-zinc-950 text-white shadow-xs">
+          <div className="grid h-6 w-6 sm:h-8 sm:w-8 place-items-center border-2 border-border bg-primary text-primary-foreground shadow-xs">
             <Car className="h-3 w-3 sm:h-4 sm:w-4" />
           </div>
-          <span className="text-xs sm:text-sm font-bold text-zinc-950">
+          <span className="text-xs sm:text-sm font-bold text-foreground">
             Detail Plat Kendaraan
           </span>
-          <span className="font-mono text-[11px] sm:text-xs font-bold text-zinc-950 bg-white px-2 py-0.5 rounded-md border border-zinc-300 shadow-xs">
+          <span className="font-mono text-[11px] sm:text-xs font-bold text-foreground bg-card px-2 py-0.5 border-2 border-border shadow-xs">
             Kode: {data.kode}
           </span>
         </div>
@@ -46,9 +46,9 @@ export function PlatResultCard({ data }: { data: PlatData }) {
         <button
           type="button"
           onClick={handleCopy}
-          className="inline-flex items-center gap-1 border border-zinc-300 bg-white px-2 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-bold text-zinc-950 shadow-xs transition-colors hover:bg-zinc-100 active:scale-95 rounded-lg shrink-0"
+          className="inline-flex min-h-11 items-center gap-1 border-2 border-border bg-card px-2 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-bold text-foreground shadow-xs transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-md active:translate-x-1 active:translate-y-1 active:shadow-none shrink-0"
         >
-          {copied ? <Check className="h-3 w-3 text-zinc-950" /> : <Copy className="h-3 w-3 text-zinc-950" />}
+          {copied ? <Check className="h-3 w-3 text-foreground" /> : <Copy className="h-3 w-3 text-foreground" />}
           <span>{copied ? "Tersalin" : "Salin Data"}</span>
         </button>
       </div>
@@ -56,8 +56,8 @@ export function PlatResultCard({ data }: { data: PlatData }) {
       <div className="p-3.5 sm:p-5 space-y-3 sm:space-y-4">
         {/* Nopol Graphic Badge */}
         {data.nopol && (
-          <div className="mx-auto max-w-[220px] sm:max-w-[260px] rounded-xl border-2 border-zinc-950 bg-zinc-950 px-3 py-2 text-center shadow-xs">
-            <span className="font-mono text-lg sm:text-xl font-bold tracking-[0.2em] text-white">
+          <div className="mx-auto max-w-[220px] sm:max-w-[260px] border-2 border-border bg-primary px-3 py-2 text-center shadow-xs">
+            <span className="font-mono text-lg sm:text-xl font-bold tracking-[0.2em] text-primary-foreground">
               {data.nopol}
             </span>
           </div>
@@ -66,24 +66,24 @@ export function PlatResultCard({ data }: { data: PlatData }) {
         {/* Grid Details */}
         <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
           {/* Main Region */}
-          <div className="rounded-xl border border-zinc-200 bg-zinc-50/60 p-3">
-            <span className="text-[11px] font-semibold text-zinc-500 block mb-0.5">Wilayah Karesidenan</span>
-            <span className="font-bold text-xs sm:text-sm text-zinc-950">{data.wilayah}</span>
+          <div className="border-2 border-border bg-background p-3">
+            <span className="text-[11px] font-semibold text-muted-foreground block mb-0.5">Wilayah Karesidenan</span>
+            <span className="font-bold text-xs sm:text-sm text-foreground">{data.wilayah}</span>
           </div>
 
           {/* Sub Region (Kota/Kab) Highlighted */}
-          <div className="rounded-xl border border-zinc-300 bg-zinc-100/60 p-3">
+          <div className="border-2 border-border bg-muted/40 p-3">
             <div className="flex items-center justify-between mb-0.5">
-              <span className="text-[11px] font-semibold text-zinc-950 flex items-center gap-1">
-                <MapPin className="h-3 w-3 text-zinc-950" />
+              <span className="text-[11px] font-semibold text-foreground flex items-center gap-1">
+                <MapPin className="h-3 w-3 text-foreground" />
                 Sub-Wilayah (Kota / Kab Spesifik)
               </span>
             </div>
-            <span className="font-bold text-xs sm:text-sm text-zinc-950">
+            <span className="font-bold text-xs sm:text-sm text-foreground">
               {data.subWilayah ? (
                 <span>{data.subWilayah}</span>
               ) : (
-                <span className="text-zinc-400 font-normal text-xs">
+                <span className="text-muted-foreground font-normal text-xs">
                   Ketik huruf akhir plat (contoh: ALW) untuk deteksi
                 </span>
               )}
@@ -91,17 +91,17 @@ export function PlatResultCard({ data }: { data: PlatData }) {
           </div>
 
           {/* Vehicle Type */}
-          <div className="rounded-xl border border-zinc-200 bg-zinc-50/60 p-3">
-            <span className="text-[11px] font-semibold text-zinc-500 block mb-0.5">Jenis Kendaraan</span>
-            <span className="font-bold text-xs sm:text-sm text-zinc-950">
+          <div className="border-2 border-border bg-background p-3">
+            <span className="text-[11px] font-semibold text-muted-foreground block mb-0.5">Jenis Kendaraan</span>
+            <span className="font-bold text-xs sm:text-sm text-foreground">
               {data.jenisKendaraan ? data.jenisKendaraan : "—"}
             </span>
           </div>
 
           {/* Police Dept */}
-          <div className="rounded-xl border border-zinc-200 bg-zinc-50/60 p-3">
-            <span className="text-[11px] font-semibold text-zinc-500 block mb-0.5">Kepolisian Daerah</span>
-            <span className="font-bold text-xs sm:text-sm text-zinc-950">{data.polda} ({data.pulau})</span>
+          <div className="border-2 border-border bg-background p-3">
+            <span className="text-[11px] font-semibold text-muted-foreground block mb-0.5">Kepolisian Daerah</span>
+            <span className="font-bold text-xs sm:text-sm text-foreground">{data.polda} ({data.pulau})</span>
           </div>
         </div>
       </div>
