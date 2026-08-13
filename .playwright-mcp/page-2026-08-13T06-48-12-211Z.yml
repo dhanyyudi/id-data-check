@@ -1,0 +1,95 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Cek Data Indonesia Pembaca data publik Indonesia" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e11]:
+          - generic [ref=e12]: Cek Data Indonesia
+          - generic [ref=e13]: Pembaca data publik Indonesia
+      - navigation [ref=e14]:
+        - link "NIK" [ref=e15] [cursor=pointer]:
+          - /url: /nik
+        - link "Batch NIK" [ref=e16] [cursor=pointer]:
+          - /url: /batch
+        - link "Plat" [ref=e17] [cursor=pointer]:
+          - /url: /plat
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]: Kumpulan alat baca data wilayah Indonesia
+      - heading "Cek Data Indonesia" [level=1] [ref=e25]
+      - paragraph [ref=e26]: Platform untuk membaca Nomor Induk Kependudukan (NIK) satu per satu atau massal dari berkas CSV, serta kode plat nomor kendaraan.
+      - generic [ref=e27]:
+        - link "Coba Cek NIK" [ref=e28] [cursor=pointer]:
+          - /url: /nik
+        - link "Coba Batch NIK" [ref=e32] [cursor=pointer]:
+          - /url: /batch
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]: "38"
+        - generic [ref=e41]: Provinsi
+      - generic [ref=e42]:
+        - generic [ref=e43]: "514"
+        - generic [ref=e44]: Kabupaten/Kota
+      - generic [ref=e45]:
+        - generic [ref=e46]: "7.265"
+        - generic [ref=e47]: Kecamatan
+      - generic [ref=e48]:
+        - generic [ref=e49]: "61"
+        - generic [ref=e50]: Kode Plat Nomor
+    - generic [ref=e51]:
+      - heading "Pilih Modul Pembaca" [level=2] [ref=e52]
+      - generic [ref=e53]:
+        - 'link "16 Digit NIK Pembaca NIK Baca 16 digit NIK KTP: Provinsi, Kabupaten/Kota, Kecamatan, Jenis Kelamin, dan Tanggal Lahir. Contoh: 3204214501900001" [ref=e54] [cursor=pointer]':
+          - /url: /nik
+          - generic [ref=e55]:
+            - generic [ref=e56]: 16 Digit NIK
+            - heading "Pembaca NIK" [level=3] [ref=e63]
+            - paragraph [ref=e67]: "Baca 16 digit NIK KTP: Provinsi, Kabupaten/Kota, Kecamatan, Jenis Kelamin, dan Tanggal Lahir."
+          - generic [ref=e68]:
+            - generic [ref=e69]: "Contoh:"
+            - generic [ref=e70]: "3204214501900001"
+        - 'link "Olah Massal CSV Batch NIK Olah ratusan NIK dari satu berkas CSV sekaligus. Hasilnya bisa diunduh sebagai CSV atau disalin. Contoh: contoh-nik.csv" [ref=e71] [cursor=pointer]':
+          - /url: /batch
+          - generic [ref=e72]:
+            - generic [ref=e73]: Olah Massal CSV
+            - heading "Batch NIK" [level=3] [ref=e79]
+            - paragraph [ref=e83]: Olah ratusan NIK dari satu berkas CSV sekaligus. Hasilnya bisa diunduh sebagai CSV atau disalin.
+          - generic [ref=e84]:
+            - generic [ref=e85]: "Contoh:"
+            - generic [ref=e86]: contoh-nik.csv
+        - 'link "61 Kode Plat Plat Nomor Cek kode plat kendaraan: Wilayah pendaftaran, Polda, dan pulau dari 61 kode plat. Contoh: B 1234 XYZ" [ref=e87] [cursor=pointer]':
+          - /url: /plat
+          - generic [ref=e88]:
+            - generic [ref=e89]: 61 Kode Plat
+            - heading "Plat Nomor" [level=3] [ref=e96]
+            - paragraph [ref=e100]: "Cek kode plat kendaraan: Wilayah pendaftaran, Polda, dan pulau dari 61 kode plat."
+          - generic [ref=e101]:
+            - generic [ref=e102]: "Contoh:"
+            - generic [ref=e103]: B 1234 XYZ
+    - generic [ref=e105]:
+      - heading "REST API dan Integrasi" [level=2] [ref=e111]
+      - paragraph [ref=e112]: "Pembacaan NIK juga tersedia sebagai REST API:"
+      - generic [ref=e113]: POST /api/v1/nik
+  - contentinfo [ref=e115]:
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e124]:
+          - generic [ref=e125]: Cek Data Indonesia
+          - generic [ref=e126]: Kumpulan alat baca data identitas dan wilayah Indonesia
+        - navigation "Footer Navigation" [ref=e127]:
+          - list [ref=e128]:
+            - listitem [ref=e129]:
+              - link "Beranda" [ref=e130] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e131]:
+              - link "NIK" [ref=e132] [cursor=pointer]:
+                - /url: /nik
+            - listitem [ref=e133]:
+              - link "Batch" [ref=e134] [cursor=pointer]:
+                - /url: /batch
+            - listitem [ref=e135]:
+              - link "Plat" [ref=e136] [cursor=pointer]:
+                - /url: /plat
+      - generic [ref=e137]:
+        - paragraph [ref=e138]: Dibuat untuk pengembang dan kebutuhan data publik Indonesia.
+        - generic [ref=e139]: © 2026 Cek Data Indonesia

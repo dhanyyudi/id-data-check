@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Geist_Mono, Space_Grotesk } from "next/font/google";
 import { TRPCReactProvider } from "@/lib/trpc/client";
-import { TooltipProvider } from "@cloudflare/kumo";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
