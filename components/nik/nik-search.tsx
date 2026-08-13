@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { useTRPC } from "@/lib/trpc/client";
-import { useQuery } from "@tanstack/react-query";
-import { FileText } from "lucide-react";
+import { useState, useEffect, useMemo, type ComponentProps } from "react";
+import { FileText, RotateCcw } from "lucide-react";
 import { SegmentedInput, type Segment } from "@/components/ui";
 import { NikResultCard } from "@/components/nik";
+import { loadNikParser, type NikParser } from "@/lib/nik/parse-client";
+
+type CardData = ComponentProps<typeof NikResultCard>["data"];
 
 const SEGMENTS: Segment[] = [
   { id: "prov", label: "Provinsi", maxLength: 2, type: "numeric", placeholder: "32" },
@@ -17,34 +18,57 @@ const SEGMENTS: Segment[] = [
 
 const TOTAL_LENGTH = 16;
 
+const LOAD_ERROR_MSG =
+  "Gagal memuat data wilayah. Periksa koneksi internet kamu, lalu coba lagi.";
+
 export function NikSearch() {
   const [query, setQuery] = useState("");
-  const [debounced, setDebounced] = useState("");
-  const timerRef = useRef<NodeJS.Timeout | undefined>(undefined);
-  const trpc = useTRPC();
+  const [parser, setParser] = useState<NikParser | null>(null);
+  const [loadError, setLoadError] = useState("");
 
   useEffect(() => {
-    clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => setDebounced(query), 400);
-    return () => clearTimeout(timerRef.current);
-  }, [query]);
+    let cancelled = false;
+    loadNikParser()
+      .then((p) => {
+        if (!cancelled) setParser(() => p);
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError(LOAD_ERROR_MSG);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  const enabled = debounced.length >= 2;
-  const q = useQuery(trpc.nik.read.queryOptions(debounced, { enabled }));
+  const retry = () => {
+    setParser(null);
+    setLoadError("");
+    loadNikParser()
+      .then((p) => setParser(() => p))
+      .catch(() => setLoadError(LOAD_ERROR_MSG));
+  };
 
-  const loading = q.isLoading && enabled;
-  const error = (q.error as any)?.message ?? "";
-  const data = q.data
-    ? {
-        provinsi: q.data.provinsi,
-        kabupaten: q.data.kabupaten,
-        kecamatan: q.data.kecamatan,
-        jenis_kelamin: q.data.jenis_kelamin,
-        tanggal_lahir: q.data.tanggal_lahir,
-        nomor_urut: q.data.nomor_urut,
+  const parsed = useMemo(() => {
+    if (query.length >= 2 && parser) {
+      try {
+        return {
+          data: parser(query) as unknown as CardData,
+          error: "",
+        };
+      } catch (e) {
+        return {
+          data: null as CardData | null,
+          error: e instanceof Error ? e.message : "Gagal membaca NIK",
+        };
       }
-    : null;
+    }
+    return { data: null as CardData | null, error: "" };
+  }, [query, parser]);
 
+  const data = parsed.data;
+  const error = parsed.error;
+
+  const loading = !parser && !loadError;
   const isFull = query.length >= TOTAL_LENGTH;
 
   return (
@@ -67,7 +91,7 @@ export function NikSearch() {
         <SegmentedInput segments={SEGMENTS} value={query} onChange={setQuery} />
 
         <p className="mt-3 text-[11px] sm:text-xs text-zinc-500">
-          Tempel atau ketik NIK. Hasil provinsi, kota, dan tanggal lahir dibaca secara langsung.
+          Tempel atau ketik NIK. Hasil provinsi, kota, dan tanggal lahir dibaca secara langsung di browser kamu.
         </p>
       </div>
 
@@ -83,17 +107,31 @@ export function NikSearch() {
           </div>
         )}
 
-        {error && !loading && (
+        {loadError && !loading && (
+          <div className="rounded-xl border border-red-200 bg-red-50 p-3 sm:p-4 space-y-3">
+            <p className="text-xs sm:text-sm font-semibold text-red-700">{loadError}</p>
+            <button
+              type="button"
+              onClick={retry}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-red-300 bg-white px-3 py-1.5 text-xs font-bold text-red-700 shadow-xs transition-colors hover:bg-red-100"
+            >
+              <RotateCcw className="h-3.5 w-3.5" />
+              Coba Lagi
+            </button>
+          </div>
+        )}
+
+        {error && !loading && !loadError && (
           <div className="rounded-xl border border-red-200 bg-red-50 p-3 sm:p-4">
             <p className="text-xs sm:text-sm font-semibold text-red-700">{error}</p>
           </div>
         )}
 
-        {query.length >= 2 && data && !error && !loading && (
-          <NikResultCard data={data as any} segments={SEGMENTS} value={query} />
+        {query.length >= 2 && data && !error && !loading && !loadError && (
+          <NikResultCard data={data} segments={SEGMENTS} value={query} />
         )}
 
-        {query.length < 2 && !loading && (
+        {query.length < 2 && !loading && !loadError && (
           <div className="rounded-2xl border border-dashed border-zinc-300 bg-white p-6 sm:p-8 text-center shadow-xs">
             <div className="mx-auto flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-zinc-950 text-white mb-2 sm:mb-3 shadow-xs">
               <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
