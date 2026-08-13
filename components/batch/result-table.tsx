@@ -43,15 +43,28 @@ export function ResultTable({ result, filter }: Props) {
     return () => observer.disconnect();
   }, []);
 
+  // A scrollTop left over from a longer list would point past the end of a
+  // freshly filtered one. Scrolling the container natively also fires onScroll,
+  // which is what puts the state back in sync.
+  useEffect(() => {
+    const el = containerRef.current;
+    if (el && el.scrollTop !== 0) el.scrollTop = 0;
+  }, [filter]);
+
   const visibleRange = useMemo(() => {
     if (!windowed) {
       return { start: 0, end: filteredIndexes.length };
     }
     const height = viewportHeight || 600;
-    const start = Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN);
+    // Clamped as well as reset above, because a container shorter than its
+    // viewport never fires the scroll event that would correct the state.
+    const start = Math.min(
+      Math.max(0, filteredIndexes.length - 1),
+      Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN)
+    );
     const end = Math.min(
       filteredIndexes.length,
-      Math.ceil((scrollTop + height) / ROW_HEIGHT) + OVERSCAN
+      Math.max(start + 1, Math.ceil((scrollTop + height) / ROW_HEIGHT) + OVERSCAN)
     );
     return { start, end };
   }, [windowed, filteredIndexes.length, scrollTop, viewportHeight]);
