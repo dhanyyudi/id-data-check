@@ -2,7 +2,8 @@ import Link from "next/link";
 import { Database } from "lucide-react";
 import { SITE_NAME } from "@/lib/site";
 
-// Entri /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap; lihat plan/05.
+// Entri /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap.
+// Kembalikan entri ini begitu tabel kodepos dan sekolah sudah terisi.
 const siteLinks = [
   { href: "/", label: "Beranda" },
   { href: "/nik", label: "NIK" },

@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { SITE_NAME } from "@/lib/site";
 
-// Entri /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap; lihat plan/05.
+// Entri /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap.
+// Kembalikan entri ini begitu tabel kodepos dan sekolah sudah terisi.
 const navItems = [
   { href: "/nik", label: "NIK" },
   { href: "/batch", label: "Batch NIK" },

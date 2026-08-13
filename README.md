@@ -23,7 +23,9 @@ URL live: <https://id-data-check.gislabs.workers.dev>
 
 **Kode Pos dan NPSN belum aktif di fork ini.** Kedua halaman butuh database
 Turso yang belum tersedia, jadi keduanya disembunyikan dari navigasi dan
-sitemap sementara. Pemulihannya dicatat di `plan/07-data-recovery-runbook.md`.
+sitemap sementara. Kodenya tetap utuh: untuk menghidupkannya kembali, siapkan
+database Turso, isi tabel kodepos dan sekolah, lalu kembalikan kedua rute ke
+navigasi dan sitemap.
 
 Endpoint REST yang tersedia: `POST /api/v1/nik`.
 
