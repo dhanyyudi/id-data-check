@@ -88,7 +88,7 @@ export function OutputConfig({
                     : "border-border bg-card opacity-70"
                 }`}
               >
-                <label className="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5">
+                <label className="flex min-h-11 min-w-0 flex-1 cursor-pointer items-center gap-2.5">
                   <input
                     type="checkbox"
                     checked={checked}
@@ -105,7 +105,7 @@ export function OutputConfig({
                   disabled={!checked}
                   onChange={(e) => onLabelChange(field.key, e.target.value)}
                   aria-invalid={Boolean(problem)}
-                  className={`w-full border-2 px-2.5 py-1.5 text-xs font-semibold text-foreground shadow-xs outline-none transition-colors focus:ring-2 focus:ring-primary sm:w-56 disabled:opacity-50 ${
+                  className={`w-full min-h-11 border-2 px-2.5 py-1.5 text-xs font-semibold text-foreground shadow-xs outline-none transition-colors focus:ring-2 focus:ring-primary sm:w-56 disabled:opacity-50 ${
                     problem
                       ? "border-destructive bg-destructive/10 text-destructive"
                       : "border-border bg-card"

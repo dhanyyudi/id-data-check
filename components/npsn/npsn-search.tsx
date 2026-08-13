@@ -112,7 +112,7 @@ export function NpsnSearch() {
               placeholder="Cari nama sekolah (contoh: SMAN 1 Bandung)..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full text-xs sm:text-sm font-medium pl-8 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 border-2 border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+              className="w-full min-h-11 text-xs sm:text-sm font-medium pl-8 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 border-2 border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
             />
           </div>
         )}

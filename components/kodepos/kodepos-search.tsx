@@ -130,7 +130,7 @@ export function KodeposSearch() {
               placeholder="Ketik nama kelurahan, kecamatan, atau kota (contoh: Braga, Coblong, Bandung)..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full text-xs sm:text-sm font-medium pl-9 pr-3.5 py-2.5 sm:py-3 border-2 border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+              className="w-full min-h-11 text-xs sm:text-sm font-medium pl-9 pr-3.5 py-2.5 sm:py-3 border-2 border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
             />
           </div>
         )}

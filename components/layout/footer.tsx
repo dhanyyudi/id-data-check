@@ -30,12 +30,12 @@ export function Footer() {
           </div>
 
           <nav aria-label="Footer Navigation">
-            <ul className="flex flex-wrap gap-x-5 gap-y-1.5">
+            <ul className="flex flex-wrap gap-x-5 gap-y-3">
               {siteLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground"
+                    className="inline-flex min-h-11 items-center text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.label}
                   </Link>

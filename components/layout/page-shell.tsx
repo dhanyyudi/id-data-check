@@ -20,7 +20,10 @@ export function PageShell({
     <main className="mx-auto w-full max-w-3xl px-4 py-6 sm:px-6 sm:py-10">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-xs text-muted-foreground mb-5">
-        <Link href="/" className="hover:text-foreground transition-colors font-medium">
+        <Link
+          href="/"
+          className="inline-flex min-h-11 items-center hover:text-foreground transition-colors font-medium"
+        >
           Beranda
         </Link>
         <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
