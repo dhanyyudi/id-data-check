@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IdCard, MapPin, Car, GraduationCap, Home } from "lucide-react";
+import { IdCard, Car, Home, FileSpreadsheet } from "lucide-react";
 import { Dock, DockIcon } from "@/components/ui/dock";
 
+// Entri /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap; lihat plan/05.
 const items = [
   { href: "/", label: "Beranda", Icon: Home },
   { href: "/nik", label: "NIK", Icon: IdCard },
-  { href: "/kodepos", label: "Kode Pos", Icon: MapPin },
+  { href: "/batch", label: "Batch", Icon: FileSpreadsheet },
   { href: "/plat", label: "Plat", Icon: Car },
-  { href: "/npsn", label: "NPSN", Icon: GraduationCap },
 ];
 
 export function NavDock() {

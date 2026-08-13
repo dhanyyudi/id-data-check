@@ -74,12 +74,12 @@ export function NikResultCard({ data, segments, value }: Props) {
             <Terminal className="h-3 w-3 sm:h-4 sm:w-4" />
           </div>
           <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-950">
-            NIK Inspector
+            Pemeriksa NIK
           </span>
           {isComplete && (
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] sm:text-xs font-bold text-zinc-950 border border-zinc-300">
               <ShieldCheck className="h-3 w-3 text-zinc-950" />
-              <span className="hidden sm:inline">16 Digit Validated</span>
+              <span className="hidden sm:inline">16 Digit Tervalidasi</span>
               <span className="sm:hidden">16 Digit</span>
             </span>
           )}
@@ -94,12 +94,12 @@ export function NikResultCard({ data, segments, value }: Props) {
           {copied ? (
             <>
               <Check className="h-3 w-3 text-zinc-950" />
-              <span>Copied</span>
+              <span>Tersalin</span>
             </>
           ) : (
             <>
               <Copy className="h-3 w-3 text-zinc-950" />
-              <span>Copy JSON</span>
+              <span>Salin JSON</span>
             </>
           )}
         </button>
@@ -162,7 +162,7 @@ export function NikResultCard({ data, segments, value }: Props) {
 
         {/* Raw NIK String Bar */}
         <div className="mt-3 sm:mt-4 flex items-center justify-between rounded-xl border border-zinc-200 bg-zinc-100/80 px-3 py-2 sm:px-4 sm:py-2.5 text-xs text-zinc-600 font-mono">
-          <span className="font-bold text-zinc-500 text-[11px] sm:text-xs">Raw Input:</span>
+          <span className="font-bold text-zinc-500 text-[11px] sm:text-xs">Input Asli:</span>
           <span className="text-xs sm:text-base font-bold tracking-widest text-zinc-950 tabular">
             {value || "—"}
           </span>

@@ -3,9 +3,10 @@ import { KodeposSearch } from "@/components/kodepos/kodepos-search";
 import { KodeposFormat } from "@/components/kodepos/kodepos-format";
 import { PageShell } from "@/components/layout/page-shell";
 import { FaqSection } from "@/components/ui/faq-section";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cari Kode Pos Indonesia — Kelurahan, Kecamatan & Koordinat Peta",
+  title: "Cari Kode Pos Indonesia: Kelurahan, Kecamatan, dan Koordinat Peta",
   description:
     "Cari kelurahan, kecamatan, kabupaten, dan titik koordinat lokasi dari 5 digit kode pos Indonesia secara cepat dan lengkap (92.000+ data kelurahan).",
   keywords: [
@@ -17,14 +18,15 @@ export const metadata: Metadata = {
     "peta kode pos",
   ],
   alternates: {
-    canonical: "https://bacadataindo.my.id/kodepos",
+    canonical: `${SITE_URL}/kodepos`,
   },
+  robots: { index: false, follow: false },
   openGraph: {
-    title: "Cari Kode Pos Indonesia — Kelurahan, Kecamatan & Koordinat Peta",
+    title: "Cari Kode Pos Indonesia: Kelurahan, Kecamatan, dan Koordinat Peta",
     description:
       "Cari kelurahan, kecamatan, kabupaten, dan lokasi peta dari 5 digit kode pos Indonesia.",
-    url: "https://bacadataindo.my.id/kodepos",
-    siteName: "Indonesia Data Reader",
+    url: `${SITE_URL}/kodepos`,
+    siteName: SITE_NAME,
     locale: "id_ID",
     type: "website",
   },
@@ -39,7 +41,7 @@ const faqItems = [
   {
     question: "Apakah semua kode pos Indonesia tersedia?",
     answer:
-      "Ya, database mencakup lebih dari 92.000 kelurahan dan kode pos di seluruh Indonesia lengkap dengan latitude & longitude.",
+      "Ya, database mencakup lebih dari 92.000 kelurahan dan kode pos di seluruh Indonesia lengkap dengan koordinat latitude dan longitude.",
   },
 ];
 

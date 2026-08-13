@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Database } from "lucide-react";
+import { SITE_NAME } from "@/lib/site";
 
+// Entri /kodepos dan /npsn disembunyikan sampai database Turso fork ini siap; lihat plan/05.
 const siteLinks = [
   { href: "/", label: "Beranda" },
-  { href: "/nik", label: "NIK Reader" },
-  { href: "/kodepos", label: "Kode Pos" },
-  { href: "/plat", label: "Plat Nomor" },
-  { href: "/npsn", label: "NPSN Sekolah" },
+  { href: "/nik", label: "NIK" },
+  { href: "/batch", label: "Batch" },
+  { href: "/plat", label: "Plat" },
 ];
 
 export function Footer() {
@@ -20,10 +21,10 @@ export function Footer() {
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-bold text-zinc-950 leading-none">
-                Indonesia Data Reader
+                {SITE_NAME}
               </span>
               <span className="text-[11px] font-medium text-zinc-500 mt-0.5">
-                Unified Indonesian Identity & Regional Data Toolkit
+                Kumpulan alat baca data identitas dan wilayah Indonesia
               </span>
             </div>
           </div>
@@ -46,9 +47,9 @@ export function Footer() {
 
         <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-zinc-100 pt-4 text-xs text-zinc-500 font-medium">
           <p className="text-[11px]">
-            Designed for Indonesian Developers & Public Data Utilities.
+            Dibuat untuk pengembang dan kebutuhan data publik Indonesia.
           </p>
-          <span className="text-[11px]">© {new Date().getFullYear()} Indonesia Data Reader</span>
+          <span className="text-[11px]">© {new Date().getFullYear()} {SITE_NAME}</span>
         </div>
       </div>
     </footer>

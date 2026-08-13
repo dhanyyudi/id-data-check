@@ -8,19 +8,19 @@ const PLAT_SPEC = [
     id: "kode",
     label: "Kode Wilayah",
     sample: "B",
-    description: "1-2 huruf pertama yang mengidentifikasi wilayah kepolisian pendaftaran kendaraan.",
+    description: "1–2 huruf pertama yang mengidentifikasi wilayah kepolisian pendaftaran kendaraan.",
   },
   {
     id: "no",
     label: "Nomor Registrasi",
     sample: "1234",
-    description: "1-4 digit angka nomor registrasi kendaraan.",
+    description: "1–4 digit angka nomor registrasi kendaraan.",
   },
   {
     id: "seri",
     label: "Kode Seri Sub-Wilayah",
     sample: "XYZ",
-    description: "1-3 huruf seri belakang yang menentukan sub-wilayah kabupaten/kota & jenis kendaraan.",
+    description: "1–3 huruf seri belakang yang menentukan sub-wilayah kabupaten/kota dan jenis kendaraan.",
   },
 ] as const;
 

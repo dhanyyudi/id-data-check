@@ -38,3 +38,11 @@ data_npsn*.json
 # Project internal guides
 AGENTS.md
 CLAUDE.md
+/plan/
+
+# Spreadsheet data — never commit to this public repo.
+# Only the synthetic sample file is allowed through.
+*.csv
+*.xlsx
+*.xls
+!public/contoh-nik.csv
