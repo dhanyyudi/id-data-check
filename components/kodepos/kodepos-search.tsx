@@ -76,20 +76,20 @@ export function KodeposSearch() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6 shadow-xs space-y-3.5">
+      <div className="border-2 border-border bg-card p-4 sm:p-6 shadow-md space-y-3.5">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
-          <label className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-700">
+          <label className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-foreground">
             {isCodeMode ? "Pencarian 5 Digit Kode Pos" : "Pencarian Nama Daerah"}
           </label>
 
-          <div className="flex gap-1 bg-zinc-100 p-1 rounded-xl border border-zinc-200">
+          <div className="flex gap-1 bg-muted p-1 border-2 border-border">
             <button
               type="button"
               onClick={() => setMode("code")}
-              className={`px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-lg transition-all ${
+              className={`px-2.5 py-1 text-[11px] sm:text-xs font-bold transition-all border-2 ${
                 isCodeMode
-                  ? "bg-zinc-950 text-white shadow-xs"
-                  : "text-zinc-600 hover:text-zinc-950"
+                  ? "border-border bg-primary text-primary-foreground shadow-xs"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               5 Digit Angka
@@ -97,10 +97,10 @@ export function KodeposSearch() {
             <button
               type="button"
               onClick={() => setMode("name")}
-              className={`px-2.5 py-1 text-[11px] sm:text-xs font-bold rounded-lg transition-all ${
+              className={`px-2.5 py-1 text-[11px] sm:text-xs font-bold transition-all border-2 ${
                 isNameMode
-                  ? "bg-zinc-950 text-white shadow-xs"
-                  : "text-zinc-600 hover:text-zinc-950"
+                  ? "border-border bg-primary text-primary-foreground shadow-xs"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               Nama Daerah
@@ -111,10 +111,10 @@ export function KodeposSearch() {
         {isCodeMode ? (
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] sm:text-xs text-zinc-500 font-medium">Input Segmen Kode Pos</span>
+              <span className="text-[11px] sm:text-xs text-muted-foreground font-medium">Input Segmen Kode Pos</span>
               <span
                 className={`font-mono text-[11px] sm:text-xs font-bold tabular ${
-                  isFullCode ? "text-zinc-950 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-300" : "text-zinc-500"
+                  isFullCode ? "text-foreground bg-muted px-2 py-0.5 border-2 border-border" : "text-muted-foreground"
                 }`}
               >
                 {query.length}/5
@@ -124,18 +124,18 @@ export function KodeposSearch() {
           </div>
         ) : (
           <div className="relative">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-zinc-400" />
+            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Ketik nama kelurahan, kecamatan, atau kota (contoh: Braga, Coblong, Bandung)..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full text-xs sm:text-sm font-medium pl-9 pr-3.5 py-2.5 sm:py-3 border border-zinc-300 rounded-xl bg-white text-zinc-950 focus:outline-none focus:ring-2 focus:ring-zinc-950/20 focus:border-zinc-950 transition-colors"
+              className="w-full text-xs sm:text-sm font-medium pl-9 pr-3.5 py-2.5 sm:py-3 border-2 border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
             />
           </div>
         )}
 
-        <p className="text-[11px] sm:text-xs text-zinc-500">
+        <p className="text-[11px] sm:text-xs text-muted-foreground">
           {isCodeMode
             ? "Masukkan 5 digit kode pos untuk mencari kelurahan dan lokasi peta."
             : "Ketik minimal 2 huruf nama kelurahan/kecamatan/kota untuk mencari kode posnya."}
@@ -144,21 +144,21 @@ export function KodeposSearch() {
 
       <div className="min-h-[14rem]">
         {loading && (
-          <div className="animate-pulse rounded-2xl border border-zinc-200 bg-white p-6 space-y-3 shadow-xs">
-            <div className="h-4 w-32 rounded bg-zinc-200" />
-            <div className="h-20 rounded-xl bg-zinc-100" />
+          <div className="animate-pulse border-2 border-border bg-card p-6 space-y-3 shadow-md">
+            <div className="h-4 w-32 bg-muted" />
+            <div className="h-20 bg-muted" />
           </div>
         )}
 
         {error && !loading && (
-          <div className="rounded-xl border border-red-200 bg-red-50 p-4">
-            <p className="text-xs sm:text-sm font-semibold text-red-700">{error}</p>
+          <div className="border-2 border-destructive bg-destructive/10 p-4">
+            <p className="text-xs sm:text-sm font-semibold text-destructive">{error}</p>
           </div>
         )}
 
         {results.length > 0 && !error && !loading && (
           <div className="space-y-3">
-            <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold text-zinc-500 px-1">
+            <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold text-muted-foreground px-1">
               <span>Ditemukan {results.length} lokasi</span>
               <span>Klik kartu untuk buka peta</span>
             </div>
@@ -175,12 +175,12 @@ export function KodeposSearch() {
         )}
 
         {!query && !loading && results.length === 0 && (
-          <div className="rounded-2xl border border-dashed border-zinc-300 bg-white p-6 sm:p-8 text-center shadow-xs">
-            <div className="mx-auto flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-zinc-950 text-white mb-2.5 sm:mb-3 shadow-xs">
+          <div className="border-2 border-dashed border-border bg-card p-6 sm:p-8 text-center shadow-md">
+            <div className="mx-auto flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border-2 border-border bg-primary text-primary-foreground mb-2.5 sm:mb-3 shadow-xs">
               <MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
-            <p className="text-xs sm:text-sm font-bold text-zinc-950">Menunggu Input Pencarian</p>
-            <p className="text-[11px] sm:text-xs text-zinc-500 mt-1 max-w-xs mx-auto">
+            <p className="text-xs sm:text-sm font-bold text-foreground">Menunggu Input Pencarian</p>
+            <p className="text-[11px] sm:text-xs text-muted-foreground mt-1 max-w-xs mx-auto">
               {isCodeMode
                 ? "Masukkan 5 digit kode pos di atas untuk mencari data lokasi kelurahan dan peta."
                 : "Ketik nama kelurahan, kecamatan, atau kota untuk menemukan kode posnya."}

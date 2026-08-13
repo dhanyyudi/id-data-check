@@ -88,8 +88,8 @@ export function PlatSearch() {
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      <div className="rounded-2xl border border-zinc-200 bg-white p-3.5 sm:p-6 shadow-xs space-y-3">
-        <label className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-700 block">
+      <div className="border-2 border-border bg-card p-3.5 sm:p-6 shadow-md space-y-3">
+        <label className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-foreground block">
           Ketik Kode Plat Nomor
         </label>
         <input
@@ -98,42 +98,42 @@ export function PlatSearch() {
           value={raw}
           onKeyDown={handleKeyDown}
           onChange={handleChange}
-          className="w-full font-mono text-base sm:text-lg tracking-wider px-3.5 py-2.5 sm:py-3 border border-zinc-300 rounded-xl bg-white text-zinc-950 text-center placeholder:font-sans placeholder:text-xs placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-zinc-950/20 focus:border-zinc-950 transition-colors"
+          className="w-full font-mono text-base sm:text-lg tracking-wider px-3.5 py-2.5 sm:py-3 border-2 border-border bg-card text-foreground text-center placeholder:font-sans placeholder:text-xs placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
         />
-        <p className="text-[11px] sm:text-xs text-zinc-500 text-center">
+        <p className="text-[11px] sm:text-xs text-muted-foreground text-center">
           Ketik kode wilayah (contoh: B atau D), angka registrasi, dan seri akhir (contoh: UXX) untuk membaca kota/kabupaten spesifik.
         </p>
       </div>
 
       {showErr && (
-        <p className="text-xs font-semibold text-red-600 text-center">
+        <p className="text-xs font-semibold text-destructive text-center">
           Format tidak valid: Harus diawali 1–2 huruf kode wilayah (contoh: B, D, BK)
         </p>
       )}
 
       <div className="min-h-[12rem]">
         {loading && (
-          <div className="animate-pulse rounded-2xl border border-zinc-200 bg-white p-4 space-y-3 shadow-xs">
-            <div className="h-4 w-32 rounded bg-zinc-200" />
-            <div className="h-16 rounded-xl bg-zinc-100" />
+          <div className="animate-pulse border-2 border-border bg-card p-4 space-y-3 shadow-md">
+            <div className="h-4 w-32 bg-muted" />
+            <div className="h-16 bg-muted" />
           </div>
         )}
 
         {apiError && (
-          <div className="rounded-xl border border-red-200 bg-red-50 p-3 sm:p-4">
-            <p className="text-xs sm:text-sm font-semibold text-red-700">{apiError}</p>
+          <div className="border-2 border-destructive bg-destructive/10 p-3 sm:p-4">
+            <p className="text-xs sm:text-sm font-semibold text-destructive">{apiError}</p>
           </div>
         )}
 
         {data && valid && !loading && !apiError && <PlatResultCard data={data} />}
 
         {!raw && !loading && !data && (
-          <div className="rounded-2xl border border-dashed border-zinc-300 bg-white p-6 sm:p-8 text-center shadow-xs">
-            <div className="mx-auto flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-zinc-950 text-white mb-2 sm:mb-3 shadow-xs">
+          <div className="border-2 border-dashed border-border bg-card p-6 sm:p-8 text-center shadow-md">
+            <div className="mx-auto flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center border-2 border-border bg-primary text-primary-foreground mb-2 sm:mb-3 shadow-xs">
               <Car className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
-            <p className="text-xs sm:text-sm font-bold text-zinc-950">Menunggu Input Kode Plat</p>
-            <p className="text-[11px] sm:text-xs text-zinc-500 mt-1 max-w-xs mx-auto">
+            <p className="text-xs sm:text-sm font-bold text-foreground">Menunggu Input Kode Plat</p>
+            <p className="text-[11px] sm:text-xs text-muted-foreground mt-1 max-w-xs mx-auto">
               Ketik plat kendaraan (misal `B 1234 UXX` atau `D 1234 AF`) untuk membaca sub-wilayah kota/kabupaten dan jenis kendaraan.
             </p>
           </div>

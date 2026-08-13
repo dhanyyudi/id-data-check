@@ -90,16 +90,16 @@ export default function NikPage() {
         <NikSearch />
         <Link
           href="/batch"
-          className="mt-4 flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 shadow-xs transition-all hover:border-zinc-950 hover:bg-zinc-50"
+          className="mt-4 flex items-center gap-3 border-2 border-border bg-card p-4 shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg"
         >
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-zinc-950 text-white shadow-xs">
+          <div className="grid h-9 w-9 shrink-0 place-items-center border-2 border-border bg-primary text-primary-foreground shadow-xs">
             <FileSpreadsheet className="h-4 w-4" />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-bold text-zinc-950">
+            <p className="text-xs font-bold text-foreground">
               Punya banyak NIK sekaligus?
             </p>
-            <p className="mt-0.5 text-[11px] text-zinc-500">
+            <p className="mt-0.5 text-[11px] text-muted-foreground">
               Olah ratusan NIK dari satu berkas CSV lewat Batch NIK. Semuanya tetap di browser kamu.
             </p>
           </div>

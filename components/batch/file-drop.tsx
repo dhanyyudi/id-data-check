@@ -61,19 +61,19 @@ export function FileDrop({ onFile, onError, busy }: Props) {
           setDragging(false);
           accept(e.dataTransfer.files?.[0]);
         }}
-        className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed bg-white p-8 text-center shadow-xs transition-colors sm:p-10 ${
+        className={`flex cursor-pointer flex-col items-center justify-center gap-2 border-2 border-dashed bg-card p-8 text-center shadow-md transition-all sm:p-10 ${
           dragging
-            ? "border-zinc-950 bg-zinc-50"
-            : "border-zinc-300 hover:border-zinc-400 hover:bg-zinc-50"
+            ? "border-border bg-muted/50"
+            : "border-border hover:bg-muted/30"
         }`}
       >
-        <div className="grid h-11 w-11 place-items-center rounded-xl bg-zinc-950 text-white shadow-xs">
+        <div className="grid h-11 w-11 place-items-center border-2 border-border bg-primary text-primary-foreground shadow-xs">
           <Upload className="h-5 w-5" />
         </div>
-        <p className="text-sm font-bold text-zinc-950">
+        <p className="text-sm font-bold text-foreground">
           Seret berkas CSV ke sini, atau klik untuk memilih
         </p>
-        <p className="text-xs text-zinc-500">
+        <p className="text-xs text-muted-foreground">
           Berkas .csv (maks. 20 MB), diproses sepenuhnya di browser.
         </p>
         <input
@@ -93,7 +93,7 @@ export function FileDrop({ onFile, onError, busy }: Props) {
           type="button"
           disabled={busy}
           onClick={() => inputRef.current?.click()}
-          className="inline-flex items-center gap-2 rounded-xl bg-zinc-950 px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-zinc-800 active:scale-95 disabled:opacity-50"
+          className="inline-flex items-center gap-2 border-2 border-border bg-primary px-4 py-2.5 text-xs font-bold text-primary-foreground shadow-md transition-all hover:bg-primary-hover hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none disabled:opacity-50"
         >
           <FileUp className="h-4 w-4" />
           Pilih Berkas CSV
@@ -102,16 +102,16 @@ export function FileDrop({ onFile, onError, busy }: Props) {
           type="button"
           disabled={busy}
           onClick={loadExample}
-          className="text-xs font-semibold text-zinc-600 underline-offset-4 transition-colors hover:text-zinc-950 hover:underline disabled:opacity-50"
+          className="text-xs font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline disabled:opacity-50"
         >
           Coba berkas contoh →
         </button>
       </div>
 
-      <div className="flex items-start gap-2 rounded-xl border border-zinc-200 bg-zinc-100/70 px-3 py-2.5 text-xs text-zinc-600">
-        <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-zinc-950" />
+      <div className="flex items-start gap-2 border-2 border-border bg-muted/50 px-3 py-2.5 text-xs text-muted-foreground">
+        <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-foreground" />
         <span>
-          <strong className="font-bold text-zinc-950">Berkas diproses di browser kamu.</strong>{" "}
+          <strong className="font-bold text-foreground">Berkas diproses di browser kamu.</strong>{" "}
           Tidak ada yang diunggah ke server.
         </span>
       </div>

@@ -243,7 +243,7 @@ export function SegmentedInput({
       {/* Sliding glow indicator */}
       {glowRect && (
         <div
-          className="segment-glow pointer-events-none absolute z-0 rounded-lg sm:rounded-xl"
+          className="segment-glow pointer-events-none absolute z-0"
           style={{
             left: glowRect.left - 2,
             top: glowRect.top - 2,
@@ -275,14 +275,14 @@ export function SegmentedInput({
               onBlur={handleBlur}
               className={cn(
                 "segment-input font-mono text-center transition-all duration-150 tracking-wider",
-                "rounded-lg sm:rounded-xl border bg-white text-zinc-950",
-                "placeholder:text-zinc-400 font-bold",
+                "sm:border-2 border bg-card text-foreground",
+                "placeholder:text-muted-foreground font-bold",
                 "focus:outline-none",
                 isFocused
-                  ? "border-zinc-950 ring-2 ring-zinc-950/20 shadow-xs"
+                  ? "border-border ring-2 ring-primary shadow-xs"
                   : isFilled
-                    ? "border-zinc-300 bg-zinc-100/50"
-                    : "border-zinc-200",
+                    ? "border-border bg-muted/40"
+                    : "border-border",
                 // Compact responsive sizes on mobile:
                 segment.maxLength <= 1 && "w-9 h-9 text-xs sm:w-11 sm:h-11 sm:text-lg px-1",
                 segment.maxLength === 2 && "w-10 sm:w-14 h-9 sm:h-11 text-xs sm:text-lg px-1",
@@ -299,8 +299,8 @@ export function SegmentedInput({
               className={cn(
                 "segment-label text-[9px] sm:text-[10px] font-bold tracking-tight transition-colors duration-150 truncate max-w-[4rem] sm:max-w-none text-center",
                 isFocused
-                  ? "text-zinc-950"
-                  : "text-zinc-500"
+                  ? "text-foreground"
+                  : "text-muted-foreground"
               )}
             >
               {segment.label}

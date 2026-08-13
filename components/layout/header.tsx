@@ -38,7 +38,7 @@ export function Header() {
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
+            className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
           >
             <div className="grid h-9 w-9 place-items-center bg-primary border-2 border-border shadow-xs">
               <Database className="h-5 w-5" />

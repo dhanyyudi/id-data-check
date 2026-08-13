@@ -90,17 +90,17 @@ export default function Home() {
       <main className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
         {/* Hero Section */}
         <section className="animate-fade-up text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1 text-xs font-bold text-zinc-950 mb-4">
-            <Zap className="h-3.5 w-3.5 text-zinc-950" />
+          <div className="inline-flex items-center gap-2 border-2 border-border bg-accent px-3 py-1 text-xs font-bold text-foreground mb-4">
+            <Zap className="h-3.5 w-3.5 text-foreground" />
             <span>Kumpulan alat baca data wilayah Indonesia</span>
           </div>
 
-          <h1 className="text-[2.25rem] leading-tight sm:text-[3.25rem] font-black tracking-tight text-zinc-950">
+          <h1 className="font-head text-[2.25rem] leading-tight sm:text-[3.25rem] text-foreground">
             {siteWords.join(" ")}{" "}
-            <span className="underline decoration-zinc-300 underline-offset-8">{siteLastWord}</span>
+            <span className="underline decoration-primary underline-offset-8">{siteLastWord}</span>
           </h1>
 
-          <p className="mt-3 text-sm sm:text-base leading-relaxed text-zinc-600 max-w-2xl">
+          <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground max-w-2xl">
             Platform untuk membaca Nomor Induk Kependudukan (NIK) satu per satu atau massal dari berkas CSV, serta kode plat nomor kendaraan.
           </p>
 
@@ -108,16 +108,16 @@ export default function Home() {
           <div className="mt-6 flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
             <Link
               href="/nik"
-              className="inline-flex items-center gap-2 rounded-xl bg-zinc-950 px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-xs transition-all hover:bg-zinc-800 active:scale-95"
+              className="inline-flex items-center gap-2 border-2 border-border bg-primary px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary-hover hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none"
             >
               <span>Coba Cek NIK</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/batch"
-              className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-zinc-950 shadow-xs transition-colors hover:bg-zinc-100"
+              className="inline-flex items-center gap-2 border-2 border-border bg-card px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-foreground shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none"
             >
-              <FileSpreadsheet className="h-4 w-4 text-zinc-950" />
+              <FileSpreadsheet className="h-4 w-4 text-foreground" />
               <span>Coba Batch NIK</span>
             </Link>
           </div>
@@ -125,13 +125,13 @@ export default function Home() {
 
         {/* Stats Cards */}
         <section className="mt-10 animate-fade-up" style={{ animationDelay: "60ms" }}>
-          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 rounded-2xl border border-zinc-200 bg-white p-4 shadow-xs text-center">
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 border-2 border-border bg-card p-4 shadow-md text-center">
             {stats.map((s) => (
               <div key={s.label} className="p-2">
-                <div className="text-xl sm:text-2xl font-black font-mono tracking-tight tabular text-zinc-950">
+                <div className="text-xl sm:text-2xl font-mono tracking-tight tabular text-foreground">
                   {s.value}
                 </div>
-                <div className="text-[11px] sm:text-xs text-zinc-600 mt-0.5 font-semibold">
+                <div className="text-[11px] sm:text-xs text-muted-foreground mt-0.5 font-semibold">
                   {s.label}
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default function Home() {
 
         {/* Feature Bento Grid */}
         <section className="mt-10 animate-fade-up" style={{ animationDelay: "120ms" }}>
-          <h2 className="text-base font-bold tracking-tight text-zinc-950 mb-3">
+          <h2 className="font-head text-base text-foreground mb-3">
             Pilih Modul Pembaca
           </h2>
           <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
@@ -149,31 +149,31 @@ export default function Home() {
               <Link
                 key={f.href}
                 href={f.href}
-                className="group flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-zinc-950 hover:bg-zinc-50"
+                className="group flex flex-col justify-between border-2 border-border bg-card p-5 shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className="grid h-9 w-9 place-items-center rounded-xl bg-zinc-950 text-white shadow-xs">
+                    <div className="grid h-9 w-9 place-items-center border-2 border-border bg-primary text-primary-foreground shadow-xs">
                       <f.icon className="h-4 w-4" />
                     </div>
-                    <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-950 border border-zinc-300">
+                    <span className="text-[11px] font-bold px-2 py-0.5 bg-muted text-foreground border-2 border-border">
                       {f.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-sm sm:text-base font-bold text-zinc-950 flex items-center justify-between">
+                  <h3 className="text-sm sm:text-base font-bold text-foreground flex items-center justify-between">
                     <span>{f.title}</span>
-                    <ArrowRight className="h-4 w-4 text-zinc-400 transition-transform group-hover:translate-x-1 group-hover:text-zinc-950" />
+                    <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-foreground" />
                   </h3>
 
-                  <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-zinc-600">
+                  <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
                     {f.desc}
                   </p>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between rounded-xl bg-zinc-100 border border-zinc-200 px-3 py-1.5 text-xs font-mono">
-                  <span className="text-zinc-500 font-sans text-[11px]">Contoh:</span>
-                  <span className="text-zinc-950 font-bold tabular">{f.example}</span>
+                <div className="mt-4 flex items-center justify-between bg-muted border-2 border-border px-3 py-1.5 text-xs font-mono">
+                  <span className="text-muted-foreground font-sans text-[11px]">Contoh:</span>
+                  <span className="text-foreground font-bold tabular">{f.example}</span>
                 </div>
               </Link>
             ))}
@@ -182,16 +182,16 @@ export default function Home() {
 
         {/* Developer API Info Box */}
         <section className="mt-10 animate-fade-up" style={{ animationDelay: "180ms" }}>
-          <div className="rounded-2xl border border-zinc-300 bg-zinc-100/70 p-5 shadow-xs">
+          <div className="border-2 border-border bg-muted/50 p-5 shadow-md">
             <div className="flex items-center gap-2 mb-1.5">
-              <Database className="h-4 w-4 text-zinc-950" />
-              <h2 className="text-sm font-bold text-zinc-950">REST API dan Integrasi</h2>
+              <Database className="h-4 w-4 text-foreground" />
+              <h2 className="font-head text-sm text-foreground">REST API dan Integrasi</h2>
             </div>
-            <p className="text-xs text-zinc-600 leading-relaxed">
+            <p className="text-xs text-muted-foreground leading-relaxed">
               Pembacaan NIK juga tersedia sebagai REST API:
             </p>
             <div className="mt-3 flex flex-wrap gap-2 text-xs font-mono font-bold">
-              <span className="bg-white text-zinc-950 px-2.5 py-1 rounded-md border border-zinc-300 shadow-xs">POST /api/v1/nik</span>
+              <span className="bg-card text-foreground px-2.5 py-1 border-2 border-border shadow-xs">POST /api/v1/nik</span>
             </div>
           </div>
         </section>

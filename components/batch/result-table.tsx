@@ -61,10 +61,10 @@ export function ResultTable({ result, filter }: Props) {
 
   const rowClass = (status: NikStatus) =>
     status === "TIDAK VALID"
-      ? "bg-red-50 hover:bg-red-100/70"
+      ? "bg-destructive/10 hover:bg-destructive/15"
       : status === "PERLU DICEK"
-        ? "bg-amber-50 hover:bg-amber-100/70"
-        : "bg-white hover:bg-zinc-50";
+        ? "bg-primary/40 hover:bg-primary/60"
+        : "bg-card hover:bg-muted/50";
 
   const topSpacer = visibleRange.start * ROW_HEIGHT;
   const bottomSpacer =
@@ -74,18 +74,18 @@ export function ResultTable({ result, filter }: Props) {
     <div
       ref={containerRef}
       onScroll={(e) => setScrollTop(e.currentTarget.scrollTop)}
-      className="max-h-[60vh] overflow-auto rounded-2xl border border-zinc-200 bg-white shadow-xs"
+      className="max-h-[60vh] overflow-auto border-2 border-border bg-card shadow-md"
     >
       <table className="w-full border-collapse text-xs">
         <thead className="sticky top-0 z-10">
-          <tr className="bg-zinc-100/95 backdrop-blur">
-            <th className="border-b border-zinc-200 px-3 py-2.5 text-left text-[10px] font-black uppercase tracking-wider text-zinc-600">
+          <tr className="bg-muted border-b-2 border-border">
+            <th className="px-3 py-2.5 text-left text-[10px] font-head uppercase tracking-wider text-foreground">
               Baris
             </th>
             {result.outHeaders.map((header, i) => (
               <th
                 key={i}
-                className="whitespace-nowrap border-b border-zinc-200 px-3 py-2.5 text-left text-[10px] font-black uppercase tracking-wider text-zinc-600"
+                className="whitespace-nowrap px-3 py-2.5 text-left text-[10px] font-head uppercase tracking-wider text-foreground"
               >
                 {header}
               </th>
@@ -107,17 +107,17 @@ export function ResultTable({ result, filter }: Props) {
                   className={`${rowClass(status)} transition-colors`}
                   style={{ height: ROW_HEIGHT }}
                 >
-                  <td className="border-b border-zinc-100 px-3 py-2 align-middle font-mono text-[10px] font-bold tabular text-zinc-400">
+                  <td className="border-b border-border px-3 py-2 align-middle font-mono text-[10px] font-bold tabular text-muted-foreground">
                     {rowIndex + 2}
                   </td>
                   {cells.map((cell, c) => (
                     <td
                       key={c}
-                      className="max-w-[16rem] border-b border-zinc-100 px-3 py-2 align-middle font-medium text-zinc-800"
+                      className="max-w-[16rem] border-b border-border px-3 py-2 align-middle font-medium text-foreground"
                     >
                       <div className="truncate" title={cell}>
                         {cell === "" ? (
-                          <span className="text-zinc-300">—</span>
+                          <span className="text-muted-foreground/60">—</span>
                         ) : (
                           cell
                         )}

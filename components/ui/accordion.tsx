@@ -5,7 +5,7 @@ import { ChevronDownIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-// Smooth, premium easing for the open/close — fast out of the gate, gentle
+// Smooth, premium easing for the open/close: fast out of the gate, gentle
 // settle. Shared by the panel height and the chevron so they move in lockstep.
 const EASE = "ease-[cubic-bezier(0.32,0.72,0,1)]"
 

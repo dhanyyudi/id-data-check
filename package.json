@@ -14,7 +14,7 @@
     "preview": "NODE_OPTIONS=--max-old-space-size=3072 opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "NODE_OPTIONS=--max-old-space-size=3072 opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "gen:wilayah-slim": "bun run scripts/gen-wilayah-slim.ts",
-    "check:copy": "! grep -rn '—' --include='*.tsx' app components | grep -v '\"—\"' | grep -v '>—<' && ! grep -rn ' - ' --include='*.tsx' app components | grep -v 'length - 1' | grep -v '\\[index - 1\\]' | grep -v '\\.left - ' | grep -v '\\.top - ' | grep -v 'bounds\\.x - ' | grep -v ') - OVERSCAN' | grep -v 'length - visibleRange' && ! grep -rn ' & ' --include='*.tsx' app components | grep -v ' & {' | grep -v 'MotionProps & ' | grep -v 'Props & '",
+    "check:copy": "! grep -rn '—' --include='*.tsx' app components | grep -v '\"—\"' | grep -v '>—<' && ! grep -rn ' - ' --include='*.tsx' app components | grep -v 'length - 1' | grep -v '\\[index - 1\\]' | grep -v '\\.left - ' | grep -v '\\.top - ' | grep -v 'bounds\\.x - ' | grep -v ') - OVERSCAN' | grep -v 'length - visibleRange' && ! grep -rn ' & ' --include='*.tsx' app components | grep -v ' & {' | grep -v 'MotionProps & ' | grep -v 'Props & ' | grep -v ' & VariantProps'",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {

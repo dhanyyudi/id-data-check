@@ -69,21 +69,21 @@ export function NpsnSearch() {
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Search Input Box */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-3.5 sm:p-6 shadow-xs space-y-3">
+      <div className="border-2 border-border bg-card p-3.5 sm:p-6 shadow-md space-y-3">
         <div className="flex items-center justify-between gap-2">
-          <label className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-700">
+          <label className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-foreground">
             Pencarian Sekolah
           </label>
 
           {/* Mode Switcher */}
-          <div className="flex gap-1 bg-zinc-100 p-0.5 sm:p-1 rounded-xl border border-zinc-200">
+          <div className="flex gap-1 bg-muted p-0.5 sm:p-1 border-2 border-border">
             <button
               type="button"
               onClick={() => setMode("npsn")}
-              className={`px-2 py-1 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold rounded-lg transition-all ${
+              className={`px-2 py-1 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold transition-all border-2 ${
                 mode === "npsn"
-                  ? "bg-zinc-950 text-white shadow-xs"
-                  : "text-zinc-600 hover:text-zinc-950"
+                  ? "border-border bg-primary text-primary-foreground shadow-xs"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               8 Digit NPSN
@@ -91,10 +91,10 @@ export function NpsnSearch() {
             <button
               type="button"
               onClick={() => setMode("nama")}
-              className={`px-2 py-1 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold rounded-lg transition-all ${
+              className={`px-2 py-1 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold transition-all border-2 ${
                 mode === "nama"
-                  ? "bg-zinc-950 text-white shadow-xs"
-                  : "text-zinc-600 hover:text-zinc-950"
+                  ? "border-border bg-primary text-primary-foreground shadow-xs"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               Nama Sekolah
@@ -106,13 +106,13 @@ export function NpsnSearch() {
           <SegmentedInput segments={NPSN_SEGMENTS} value={query} onChange={setQuery} />
         ) : (
           <div className="relative">
-            <Search className="absolute left-3 top-2.5 sm:top-3.5 h-3.5 w-3.5 sm:h-4 sm:w-4 text-zinc-400" />
+            <Search className="absolute left-3 top-2.5 sm:top-3.5 h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Cari nama sekolah (contoh: SMAN 1 Bandung)..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full text-xs sm:text-sm font-medium pl-8 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 border border-zinc-300 rounded-xl bg-white text-zinc-950 focus:outline-none focus:ring-2 focus:ring-zinc-950/20 focus:border-zinc-950 transition-colors"
+              className="w-full text-xs sm:text-sm font-medium pl-8 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 border-2 border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
             />
           </div>
         )}
@@ -121,15 +121,15 @@ export function NpsnSearch() {
       {/* Results Section */}
       <div className="min-h-[12rem]">
         {loading && (
-          <div className="animate-pulse rounded-2xl border border-zinc-200 bg-white p-4 space-y-3 shadow-xs">
-            <div className="h-4 w-32 rounded bg-zinc-200" />
-            <div className="h-16 rounded-xl bg-zinc-100" />
+          <div className="animate-pulse border-2 border-border bg-card p-4 space-y-3 shadow-md">
+            <div className="h-4 w-32 bg-muted" />
+            <div className="h-16 bg-muted" />
           </div>
         )}
 
         {error && !loading && (
-          <div className="rounded-xl border border-red-200 bg-red-50 p-3 sm:p-4">
-            <p className="text-xs sm:text-sm font-semibold text-red-700">{error}</p>
+          <div className="border-2 border-destructive bg-destructive/10 p-3 sm:p-4">
+            <p className="text-xs sm:text-sm font-semibold text-destructive">{error}</p>
           </div>
         )}
 
@@ -142,12 +142,12 @@ export function NpsnSearch() {
         )}
 
         {query.length < 2 && !loading && results.length === 0 && (
-          <div className="rounded-2xl border border-dashed border-zinc-300 bg-white p-6 sm:p-8 text-center shadow-xs">
-            <div className="mx-auto flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-zinc-950 text-white mb-2 sm:mb-3 shadow-xs">
+          <div className="border-2 border-dashed border-border bg-card p-6 sm:p-8 text-center shadow-md">
+            <div className="mx-auto flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center border-2 border-border bg-primary text-primary-foreground mb-2 sm:mb-3 shadow-xs">
               <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
-            <p className="text-xs sm:text-sm font-bold text-zinc-950">Menunggu Input Sekolah</p>
-            <p className="text-[11px] sm:text-xs text-zinc-500 mt-1 max-w-xs mx-auto">
+            <p className="text-xs sm:text-sm font-bold text-foreground">Menunggu Input Sekolah</p>
+            <p className="text-[11px] sm:text-xs text-muted-foreground mt-1 max-w-xs mx-auto">
               Cari data sekolah berdasarkan 8 digit kode NPSN atau nama sekolah di atas.
             </p>
           </div>

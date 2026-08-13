@@ -74,14 +74,14 @@ export function NikSearch() {
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Input Box */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-3.5 sm:p-6 shadow-xs">
+      <div className="border-2 border-border bg-card p-3.5 sm:p-6 shadow-md">
         <div className="flex items-center justify-between gap-3 mb-3 sm:mb-4">
-          <label className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-700">
+          <label className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-foreground">
             Ketik NIK 16 Digit
           </label>
           <span
             className={`font-mono text-[11px] sm:text-xs font-bold tabular ${
-              isFull ? "text-zinc-950 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-300" : "text-zinc-500"
+              isFull ? "text-foreground bg-muted px-2 py-0.5 border-2 border-border" : "text-muted-foreground"
             }`}
           >
             {query.length}/{TOTAL_LENGTH}
@@ -90,7 +90,7 @@ export function NikSearch() {
 
         <SegmentedInput segments={SEGMENTS} value={query} onChange={setQuery} />
 
-        <p className="mt-3 text-[11px] sm:text-xs text-zinc-500">
+        <p className="mt-3 text-[11px] sm:text-xs text-muted-foreground">
           Tempel atau ketik NIK. Hasil provinsi, kota, dan tanggal lahir dibaca secara langsung di browser kamu.
         </p>
       </div>
@@ -98,22 +98,22 @@ export function NikSearch() {
       {/* Result Container */}
       <div className="min-h-[12rem]">
         {loading && (
-          <div className="animate-pulse rounded-2xl border border-zinc-200 bg-white p-4 space-y-3 shadow-xs">
-            <div className="h-4 w-32 rounded bg-zinc-200" />
+          <div className="animate-pulse border-2 border-border bg-card p-4 space-y-3 shadow-md">
+            <div className="h-4 w-32 bg-muted" />
             <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="h-14 rounded-xl bg-zinc-100" />
-              <div className="h-14 rounded-xl bg-zinc-100" />
+              <div className="h-14 bg-muted" />
+              <div className="h-14 bg-muted" />
             </div>
           </div>
         )}
 
         {loadError && !loading && (
-          <div className="rounded-xl border border-red-200 bg-red-50 p-3 sm:p-4 space-y-3">
-            <p className="text-xs sm:text-sm font-semibold text-red-700">{loadError}</p>
+          <div className="border-2 border-destructive bg-destructive/10 p-3 sm:p-4 space-y-3">
+            <p className="text-xs sm:text-sm font-semibold text-destructive">{loadError}</p>
             <button
               type="button"
               onClick={retry}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-red-300 bg-white px-3 py-1.5 text-xs font-bold text-red-700 shadow-xs transition-colors hover:bg-red-100"
+              className="inline-flex items-center gap-1.5 border-2 border-destructive bg-card px-3 py-1.5 text-xs font-bold text-destructive shadow-xs transition-colors hover:bg-destructive/10"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Coba Lagi
@@ -122,8 +122,8 @@ export function NikSearch() {
         )}
 
         {error && !loading && !loadError && (
-          <div className="rounded-xl border border-red-200 bg-red-50 p-3 sm:p-4">
-            <p className="text-xs sm:text-sm font-semibold text-red-700">{error}</p>
+          <div className="border-2 border-destructive bg-destructive/10 p-3 sm:p-4">
+            <p className="text-xs sm:text-sm font-semibold text-destructive">{error}</p>
           </div>
         )}
 
@@ -132,12 +132,12 @@ export function NikSearch() {
         )}
 
         {query.length < 2 && !loading && !loadError && (
-          <div className="rounded-2xl border border-dashed border-zinc-300 bg-white p-6 sm:p-8 text-center shadow-xs">
-            <div className="mx-auto flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-zinc-950 text-white mb-2 sm:mb-3 shadow-xs">
+          <div className="border-2 border-dashed border-border bg-card p-6 sm:p-8 text-center shadow-md">
+            <div className="mx-auto flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center border-2 border-border bg-primary text-primary-foreground mb-2 sm:mb-3 shadow-xs">
               <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
-            <p className="text-xs sm:text-sm font-bold text-zinc-950">Menunggu Input NIK</p>
-            <p className="text-[11px] sm:text-xs text-zinc-500 mt-1 max-w-xs mx-auto">
+            <p className="text-xs sm:text-sm font-bold text-foreground">Menunggu Input NIK</p>
+            <p className="text-[11px] sm:text-xs text-muted-foreground mt-1 max-w-xs mx-auto">
               Ketik minimal 2 digit NIK di atas untuk mulai membaca detail data wilayah.
             </p>
           </div>
