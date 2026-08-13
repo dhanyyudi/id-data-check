@@ -46,3 +46,6 @@ CLAUDE.md
 *.xlsx
 *.xls
 !public/contoh-nik.csv
+
+# Playwright MCP artifacts
+.playwright-mcp/
