@@ -102,7 +102,7 @@ export function FileDrop({ onFile, onError, busy }: Props) {
           type="button"
           disabled={busy}
           onClick={loadExample}
-          className="text-xs font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline disabled:opacity-50"
+          className="inline-flex h-11 items-center text-xs font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline disabled:opacity-50"
         >
           Coba berkas contoh →
         </button>

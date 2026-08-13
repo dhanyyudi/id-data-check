@@ -108,14 +108,14 @@ export default function Home() {
           <div className="mt-6 flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
             <Link
               href="/nik"
-              className="inline-flex items-center gap-2 border-2 border-border bg-primary px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary-hover hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none"
+              className="inline-flex items-center gap-2 border-2 border-border bg-primary px-4 py-3 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary-hover hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none"
             >
               <span>Coba Cek NIK</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/batch"
-              className="inline-flex items-center gap-2 border-2 border-border bg-card px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-foreground shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none"
+              className="inline-flex items-center gap-2 border-2 border-border bg-card px-4 py-3 sm:px-5 sm:py-3 text-xs sm:text-sm font-bold text-foreground shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none"
             >
               <FileSpreadsheet className="h-4 w-4 text-foreground" />
               <span>Coba Batch NIK</span>

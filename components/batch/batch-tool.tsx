@@ -208,7 +208,7 @@ export function BatchTool() {
                 setFilter(null);
                 setStep("config");
               }}
-              className="inline-flex items-center gap-1.5 border-2 border-border bg-card px-3.5 py-2 text-xs font-bold text-foreground shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg"
+              className="inline-flex items-center gap-1.5 border-2 border-border bg-card px-3.5 py-3 text-xs font-bold text-foreground shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg"
             >
               <ArrowRight className="h-3.5 w-3.5 rotate-180" />
               Ubah Pengaturan
@@ -216,7 +216,7 @@ export function BatchTool() {
             <button
               type="button"
               onClick={resetAll}
-              className="inline-flex items-center gap-1.5 border-2 border-border bg-card px-3.5 py-2 text-xs font-bold text-foreground shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg"
+              className="inline-flex items-center gap-1.5 border-2 border-border bg-card px-3.5 py-3 text-xs font-bold text-foreground shadow-md transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-lg"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Mulai Lagi dengan Berkas Lain

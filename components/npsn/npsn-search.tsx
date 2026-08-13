@@ -80,7 +80,7 @@ export function NpsnSearch() {
             <button
               type="button"
               onClick={() => setMode("npsn")}
-              className={`px-2 py-1 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold transition-all border-2 ${
+              className={`px-3 py-3 sm:px-3 sm:py-3 text-[11px] sm:text-xs font-bold transition-all border-2 ${
                 mode === "npsn"
                   ? "border-border bg-primary text-primary-foreground shadow-xs"
                   : "border-transparent text-muted-foreground hover:text-foreground"
@@ -91,7 +91,7 @@ export function NpsnSearch() {
             <button
               type="button"
               onClick={() => setMode("nama")}
-              className={`px-2 py-1 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold transition-all border-2 ${
+              className={`px-3 py-3 sm:px-3 sm:py-3 text-[11px] sm:text-xs font-bold transition-all border-2 ${
                 mode === "nama"
                   ? "border-border bg-primary text-primary-foreground shadow-xs"
                   : "border-transparent text-muted-foreground hover:text-foreground"

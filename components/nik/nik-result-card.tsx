@@ -89,7 +89,7 @@ export function NikResultCard({ data, segments, value }: Props) {
         <button
           type="button"
           onClick={handleCopyJson}
-          className="inline-flex items-center gap-1 sm:gap-1.5 border-2 border-border bg-card px-2 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-bold text-foreground shadow-xs transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-md active:translate-x-1 active:translate-y-1 active:shadow-none shrink-0"
+          className="inline-flex min-h-11 items-center gap-1 sm:gap-1.5 border-2 border-border bg-card px-2 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-bold text-foreground shadow-xs transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-md active:translate-x-1 active:translate-y-1 active:shadow-none shrink-0"
         >
           {copied ? (
             <>

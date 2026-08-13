@@ -57,7 +57,7 @@ export function SummaryBar({ summary, filter, onFilter }: Props) {
             key={chip.label}
             type="button"
             onClick={() => onFilter(active ? null : chip.status)}
-            className={`inline-flex items-center gap-1.5 border-2 px-3 py-1.5 text-xs font-bold shadow-xs transition-all ${
+            className={`inline-flex items-center gap-1.5 border-2 px-3.5 py-3 text-xs font-bold shadow-xs transition-all ${
               active ? chip.activeClassName : chip.className
             }`}
           >

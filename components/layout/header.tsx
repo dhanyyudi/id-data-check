@@ -62,7 +62,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "px-3 py-1.5 text-xs font-bold transition-all border-2",
+                    "px-3 py-3 text-xs font-bold transition-all border-2",
                     isActive
                       ? "bg-primary border-border shadow-xs text-primary-foreground"
                       : "border-transparent text-muted-foreground hover:bg-accent hover:text-foreground"

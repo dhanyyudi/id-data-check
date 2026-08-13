@@ -113,7 +113,7 @@ export function NikSearch() {
             <button
               type="button"
               onClick={retry}
-              className="inline-flex items-center gap-1.5 border-2 border-destructive bg-card px-3 py-1.5 text-xs font-bold text-destructive shadow-xs transition-colors hover:bg-destructive/10"
+              className="inline-flex min-h-11 items-center gap-1.5 border-2 border-destructive bg-card px-3 py-1.5 text-xs font-bold text-destructive shadow-xs transition-colors hover:bg-destructive/10"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Coba Lagi

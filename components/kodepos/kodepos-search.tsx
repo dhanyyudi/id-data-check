@@ -86,7 +86,7 @@ export function KodeposSearch() {
             <button
               type="button"
               onClick={() => setMode("code")}
-              className={`px-2.5 py-1 text-[11px] sm:text-xs font-bold transition-all border-2 ${
+              className={`px-3 py-3 text-[11px] sm:text-xs font-bold transition-all border-2 ${
                 isCodeMode
                   ? "border-border bg-primary text-primary-foreground shadow-xs"
                   : "border-transparent text-muted-foreground hover:text-foreground"
@@ -97,7 +97,7 @@ export function KodeposSearch() {
             <button
               type="button"
               onClick={() => setMode("name")}
-              className={`px-2.5 py-1 text-[11px] sm:text-xs font-bold transition-all border-2 ${
+              className={`px-3 py-3 text-[11px] sm:text-xs font-bold transition-all border-2 ${
                 isNameMode
                   ? "border-border bg-primary text-primary-foreground shadow-xs"
                   : "border-transparent text-muted-foreground hover:text-foreground"

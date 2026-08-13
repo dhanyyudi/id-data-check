@@ -284,13 +284,13 @@ export function SegmentedInput({
                     ? "border-border bg-muted/40"
                     : "border-border",
                 // Compact responsive sizes on mobile:
-                segment.maxLength <= 1 && "w-9 h-9 text-xs sm:w-11 sm:h-11 sm:text-lg px-1",
-                segment.maxLength === 2 && "w-10 sm:w-14 h-9 sm:h-11 text-xs sm:text-lg px-1",
-                segment.maxLength === 3 && "w-12 sm:w-16 h-9 sm:h-11 text-xs sm:text-base px-1",
-                segment.maxLength === 4 && "w-14 sm:w-[4.5rem] h-9 sm:h-11 text-xs sm:text-base px-1",
-                segment.maxLength === 5 && "w-16 sm:w-20 h-9 sm:h-11 text-xs sm:text-base px-1",
-                segment.maxLength === 6 && "w-20 sm:w-24 h-9 sm:h-11 text-xs sm:text-base px-1",
-                segment.maxLength === 8 && "w-24 sm:w-32 h-9 sm:h-11 text-xs sm:text-base px-1"
+                segment.maxLength <= 1 && "w-9 h-11 text-xs sm:w-11 sm:h-11 sm:text-lg px-1",
+                segment.maxLength === 2 && "w-10 sm:w-14 h-11 sm:h-11 text-xs sm:text-lg px-1",
+                segment.maxLength === 3 && "w-12 sm:w-16 h-11 sm:h-11 text-xs sm:text-base px-1",
+                segment.maxLength === 4 && "w-14 sm:w-[4.5rem] h-11 sm:h-11 text-xs sm:text-base px-1",
+                segment.maxLength === 5 && "w-16 sm:w-20 h-11 sm:h-11 text-xs sm:text-base px-1",
+                segment.maxLength === 6 && "w-20 sm:w-24 h-11 sm:h-11 text-xs sm:text-base px-1",
+                segment.maxLength === 8 && "w-24 sm:w-32 h-11 sm:h-11 text-xs sm:text-base px-1"
               )}
               aria-label={segment.label}
             />
