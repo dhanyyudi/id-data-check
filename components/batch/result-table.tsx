@@ -3,15 +3,15 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { BatchResult } from "@/lib/batch/run";
 import type { NikStatus } from "@/lib/nik/status";
+import {
+  computeVisibleRange,
+  ROW_HEIGHT,
+} from "@/lib/batch/window";
 
 interface Props {
   result: BatchResult;
   filter: NikStatus | null;
 }
-
-const ROW_HEIGHT = 40;
-const OVERSCAN = 20;
-const WINDOW_THRESHOLD = 2000;
 
 export function ResultTable({ result, filter }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -27,8 +27,6 @@ export function ResultTable({ result, filter }: Props) {
     }
     return indexes;
   }, [result, filter]);
-
-  const windowed = filteredIndexes.length > WINDOW_THRESHOLD;
 
   useEffect(() => {
     const el = containerRef.current;
@@ -51,23 +49,15 @@ export function ResultTable({ result, filter }: Props) {
     if (el && el.scrollTop !== 0) el.scrollTop = 0;
   }, [filter]);
 
-  const visibleRange = useMemo(() => {
-    if (!windowed) {
-      return { start: 0, end: filteredIndexes.length };
-    }
-    const height = viewportHeight || 600;
-    // Clamped as well as reset above, because a container shorter than its
-    // viewport never fires the scroll event that would correct the state.
-    const start = Math.min(
-      Math.max(0, filteredIndexes.length - 1),
-      Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN)
-    );
-    const end = Math.min(
-      filteredIndexes.length,
-      Math.max(start + 1, Math.ceil((scrollTop + height) / ROW_HEIGHT) + OVERSCAN)
-    );
-    return { start, end };
-  }, [windowed, filteredIndexes.length, scrollTop, viewportHeight]);
+  const visibleRange = useMemo(
+    () =>
+      computeVisibleRange({
+        total: filteredIndexes.length,
+        scrollTop,
+        viewportHeight,
+      }),
+    [filteredIndexes.length, scrollTop, viewportHeight]
+  );
 
   const rowClass = (status: NikStatus) =>
     status === "TIDAK VALID"

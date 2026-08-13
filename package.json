@@ -8,6 +8,8 @@
     "next:build": "NODE_OPTIONS=--max-old-space-size=3072 next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "opennext:build": "NODE_OPTIONS=--max-old-space-size=3072 opennextjs-cloudflare build",
     "preview": "NODE_OPTIONS=--max-old-space-size=3072 opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "NODE_OPTIONS=--max-old-space-size=3072 opennextjs-cloudflare build && opennextjs-cloudflare deploy",
@@ -52,11 +54,13 @@
     "@types/papaparse": "^5.5.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^4.1.10",
     "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "vitest": "^4.1.10",
     "wrangler": "^4.118.0"
   },
   "ignoreScripts": [
